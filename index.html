@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crie Thumbnails Gringas Profissionais e Venda em Dólar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0C14;
+    --surface:#12141F;
+    --surface-2:#171926;
+    --surface-3:#1F2333;
+    --glass:rgba(23,25,38,0.6);
+    --glass-soft:rgba(147,157,184,0.05);
+    --border:rgba(147,157,184,0.16);
+    --border-soft:rgba(147,157,184,0.09);
+    --blue:#0071fc;
+    --blue-2:#00C2FF;
+    --blue-deep:#141A3D;
+    --text:#F3F4F7;
+    --text-dim:#939DB8;
+    --text-mute:#656A7B;
+    --radius-lg:22px;
+    --radius-md:16px;
+    --radius-sm:12px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Manrope', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 24px;}
+
+  /* grid de fundo estilo blueprint */
+  .grid-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size:150px 150px, 150px 150px;
+    -webkit-mask-image:radial-gradient(ellipse 85% 55% at 50% 18%, #000 35%, transparent 88%);
+    mask-image:radial-gradient(ellipse 85% 55% at 50% 18%, #000 35%, transparent 88%);
+  }
+
+  /* ambient glow background */
+  .glow{position:fixed; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:0; opacity:0.55;}
+  .glow-1{width:620px; height:620px; top:-220px; left:-160px; background:radial-gradient(circle, rgba(124,135,247,0.55), transparent 70%);}
+  .glow-2{width:560px; height:560px; top:520px; right:-220px; background:radial-gradient(circle, rgba(0,194,255,0.35), transparent 70%);}
+  .glow-3{width:640px; height:640px; bottom:-260px; left:10%; background:radial-gradient(circle, rgba(124,135,247,0.28), transparent 70%);}
+  section, header, footer{position:relative; z-index:1;}
+
+  .eyebrow{
+    font-size:12.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:7px 14px; border-radius:999px;
+    background:var(--glass); border:1px solid var(--border);
+    color:var(--text-dim);
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2));}
+  .kicker{display:flex; justify-content:center; margin-bottom:20px;}
+
+  .section{padding:100px 0;}
+  @media (max-width:720px){ .section{padding:70px 0;} }
+  .center{text-align:center;}
+  h2.section-title{font-size:clamp(28px,4vw,44px); font-weight:800; letter-spacing:-0.02em; margin-bottom:16px;}
+  .section-sub{max-width:600px; margin:0 auto 52px; color:var(--text-dim); font-size:16.5px;}
+  .grad-text{background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-weight:700; font-size:15px;
+    padding:15px 28px; border-radius:var(--radius-sm); border:1px solid transparent;
+    cursor:pointer; transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease), filter .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px) scale(0.99);}
+  .btn-primary{
+    background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14;
+    box-shadow:0 8px 32px rgba(124,135,247,0.35), 0 6px 60px rgba(0,194,255,0.16);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 44px rgba(124,135,247,0.48), 0 10px 80px rgba(0,194,255,0.24); filter:brightness(1.06);}
+  .btn-ghost{
+    background:var(--glass); color:var(--text); border-color:var(--border);
+  }
+  .btn-ghost:hover{background:var(--glass-soft); border-color:rgba(255,255,255,0.18);}
+  .btn-block{width:100%;}
+
+  /* logo usada no rodapé */
+  .nav-logo{font-weight:800; font-size:15px; letter-spacing:-0.01em;}
+  .nav-logo span{background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:90px 0 90px;}
+
+  /* faixa + nota de dólar — abaixo do bloco de texto do hero */
+  .hero-banner{grid-area:banner; position:relative; width:100%; height:120px; pointer-events:none;}
+  .hero-ribbon{
+    position:absolute; left:50%; top:50%; width:100vw; overflow:hidden;
+    transform:translate(-50%,-50%) rotate(-3deg);
+    background:linear-gradient(90deg,var(--blue),var(--blue-2));
+    box-shadow:0 16px 44px rgba(0,113,252,0.35);
+  }
+  .hero-ribbon-track{display:flex; gap:36px; width:max-content; padding:10px 0; animation:ribbonScroll 16s linear infinite;}
+  .hero-ribbon-track span{font-size:13px; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color:#0B0C14; white-space:nowrap;}
+  @keyframes ribbonScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .hero-bill{
+    position:absolute; top:50%; left:50%; width:380px;
+    transform:translate(-50%,-50%) rotate(-9deg); z-index:2;
+    filter:drop-shadow(0 24px 44px rgba(0,0,0,0.55));
+  }
+  @media (max-width:920px){
+    .hero-banner{height:150px;}
+  }
+  @media (max-width:520px){
+    .hero-banner{height:110px;}
+    .hero-ribbon{width:130%;}
+    .hero-bill{width:230px;}
+    .hero-ribbon-track span{font-size:10.5px;}
+  }
+  .hero-logo{font-weight:800; font-size:16px; letter-spacing:-0.01em; margin:14px 0 14px;}
+  .hero-logo span{background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero-grid{
+    display:grid; grid-template-columns:1fr; gap:40px; align-items:center;
+    grid-template-areas:"text" "banner";
+  }
+  .hero-grid > div:first-child{grid-area:text;}
+  .hero h1{font-size:clamp(30px,4.4vw,46px); font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin:0 0 12px;}
+  .hero p.lead{font-size:16px; line-height:1.45; color:var(--text-dim); max-width:520px; margin-bottom:20px;}
+  .hero-checklist{display:flex; flex-direction:column; gap:9px; margin-bottom:24px;}
+  .hero-checklist li{display:flex; align-items:center; gap:10px; font-size:14.5px; font-weight:600; color:var(--text);}
+  .hero-checklist .mark{flex:none; width:22px; height:22px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .hero-note{margin-top:22px; font-size:13px; color:var(--text-mute); display:flex; gap:20px; flex-wrap:wrap;}
+  .hero-note span{display:flex; align-items:center; gap:7px;}
+  .hero-note .mark{width:16px; height:16px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; flex:none;}
+  .hero-note b{color:var(--blue-2); font-weight:700;}
+
+  /* ---------- exemplos reais carousel ---------- */
+  .examples-section{padding:0 0 100px;}
+  @media (max-width:720px){ .examples-section{padding:0 0 70px;} }
+  .examples-carousel{position:relative;}
+  .ex-track{
+    display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory;
+    padding:8px 24px 20px; scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .ex-track::-webkit-scrollbar{display:none;}
+  .ex-card{
+    flex:none; width:320px; aspect-ratio:16/9; border-radius:var(--radius-md); overflow:hidden;
+    scroll-snap-align:start; border:1px solid var(--border);
+    box-shadow:0 20px 50px rgba(0,0,0,0.45);
+  }
+  .ex-card img{width:100%; height:100%; object-fit:cover; display:block;}
+  @media (max-width:900px){ .ex-card{width:64vw;} }
+  @media (max-width:520px){ .ex-card{width:82vw;} .ex-track{padding:8px 18px 20px;} }
+  .ex-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    width:44px; height:44px; border-radius:50%; background:var(--glass); border:1px solid var(--border);
+    color:var(--text); font-size:22px; line-height:1; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    transition:background .3s ease, border-color .3s ease;
+  }
+  .ex-arrow:hover{background:var(--glass-soft); border-color:rgba(255,255,255,0.28);}
+  .ex-prev{left:10px;} .ex-next{right:10px;}
+  @media (max-width:640px){ .ex-arrow{display:none;} }
+  .ex-dots{display:flex; justify-content:center; gap:6px; margin-top:6px;}
+  .ex-dots .dot-btn{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.35); border:none; padding:0; cursor:pointer; transition:background .3s ease, width .3s ease;}
+  .ex-dots .dot-btn.active{background:var(--blue-2); width:16px; border-radius:4px;}
+
+  @keyframes heroIn{
+    from{opacity:0; transform:translateY(20px); filter:blur(10px);}
+    to{opacity:1; transform:translateY(0); filter:blur(0);}
+  }
+  .hero-grid > div:first-child > *{opacity:0; animation:heroIn .9s var(--ease) forwards;}
+  .hero-grid > div:first-child > *:nth-child(1){animation-delay:.05s;}
+  .hero-grid > div:first-child > *:nth-child(2){animation-delay:.16s;}
+  .hero-grid > div:first-child > *:nth-child(3){animation-delay:.27s;}
+  .hero-grid > div:first-child > *:nth-child(4){animation-delay:.38s;}
+  .hero-grid > div:first-child > *:nth-child(5){animation-delay:.49s;}
+  .hero-grid > div:first-child > *:nth-child(6){animation-delay:.6s;}
+  .hero-grid > div:first-child > *:nth-child(7){animation-delay:.71s;}
+  /* ---------- bento grid ---------- */
+  .bento{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:900px){ .bento{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .bento{grid-template-columns:1fr;} }
+  .bento-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);
+    padding:26px 22px; transition:border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .bento-card:hover{border-color:rgba(124,135,247,0.4); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.35);}
+  .bento-ic{
+    width:42px; height:42px; border-radius:12px; margin-bottom:16px;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, rgba(124,135,247,0.25), rgba(0,194,255,0.12));
+    border:1px solid rgba(124,135,247,0.3); color:var(--blue-2); font-weight:800; font-size:16px;
+  }
+  .bento-card h4{font-size:16.5px; font-weight:700; margin-bottom:8px; line-height:1.25;}
+  .bento-card p{font-size:14px; color:var(--text-dim);}
+
+  /* ---------- market section ---------- */
+  .market-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:start;}
+  @media (max-width:900px){ .market-grid{grid-template-columns:1fr;} }
+  .market-copy p{margin:0 auto 16px; max-width:480px; color:var(--text-dim); font-size:16px; line-height:1.65;}
+  .market-cards{display:grid; gap:12px;}
+  .m-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:18px;
+    padding:18px 20px; display:flex; gap:14px; align-items:flex-start;
+  }
+  .m-card .ic{width:36px; height:36px; border-radius:10px; flex:none; display:flex; align-items:center; justify-content:center; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; font-weight:800; font-size:14px;}
+  .m-card h4{font-size:15px; margin-bottom:3px; font-weight:700;}
+  .m-card p{font-size:13.5px; color:var(--text-dim);}
+
+  /* ---------- for whom ---------- */
+  .whom-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:760px){ .whom-grid{grid-template-columns:1fr;} }
+  .whom-card{border-radius:var(--radius-md); padding:24px 26px; border:1px solid var(--border);}
+  .whom-yes{background:linear-gradient(160deg, rgba(124,135,247,0.14), rgba(0,194,255,0.04));}
+  .whom-no{background:var(--surface);}
+  .whom-card h3{font-size:18px; margin-bottom:14px; font-weight:800;}
+  .whom-card li{display:flex; gap:10px; margin-bottom:9px; font-size:14.5px; align-items:center; color:#C4CBDC; text-align:left; line-height:1.4;}
+  .whom-card li .mark{flex:none; width:19px; height:19px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10.5px; font-weight:800; margin-top:0;}
+  .whom-yes .mark{background:var(--blue-2); color:#0B0C14;}
+  .whom-no .mark{background:rgba(255,255,255,0.14); color:#DCE1EC;}
+
+  /* ---------- steps ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; position:relative;}
+  @media (max-width:900px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .steps{grid-template-columns:1fr;} }
+  @media (min-width:901px){
+    .steps::before{content:""; position:absolute; top:48px; left:0; right:0; height:1px; z-index:0;
+      background:linear-gradient(90deg, transparent, rgba(124,135,247,0.32), rgba(0,194,255,0.32), transparent);}
+    .step{position:relative; z-index:1;}
+  }
+  .step{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:24px 22px;
+    height:100%; display:flex; flex-direction:column;
+    transition:border-color .35s var(--ease), box-shadow .35s var(--ease), transform .35s var(--ease);
+  }
+  .step:hover{border-color:rgba(124,135,247,0.5); box-shadow:0 0 0 1px rgba(124,135,247,0.15), 0 14px 30px rgba(0,0,0,0.3); transform:translateY(-3px);}
+  .step-num{
+    width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; font-weight:800; font-size:17px;
+    margin-bottom:18px;
+  }
+  .step h4{font-size:16.5px; margin-bottom:8px; font-weight:700;}
+  .step p{font-size:13.5px; color:#C4CBDC;}
+
+  /* ---------- courses ---------- */
+  .courses{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){ .courses{grid-template-columns:1fr;} }
+  .course-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:30px 26px;
+    display:flex; flex-direction:column; height:100%;
+    transition:transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .course-card:hover{transform:translateY(-4px); border-color:rgba(124,135,247,0.35); box-shadow:0 18px 44px rgba(0,0,0,0.35);}
+  .course-tag{font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#0B0C14; background:linear-gradient(90deg,var(--blue),var(--blue-2)); display:inline-block; padding:6px 12px; border-radius:999px; margin-bottom:18px; width:fit-content;}
+  .course-card h3{font-size:21px; margin-bottom:10px; font-weight:800; line-height:1.2;}
+  .course-card > p{font-size:14.5px; color:var(--text-dim); margin-bottom:20px;}
+  .course-card ul{margin-top:auto; padding-top:16px; border-top:1px solid var(--border-soft);}
+  .course-card li{font-size:13.5px; display:flex; gap:8px; margin-bottom:9px; color:var(--text-dim);}
+  .course-card li::before{content:"✓"; color:var(--blue-2); font-weight:800;}
+
+  /* ---------- modules accordion ---------- */
+  .modules-group{margin-bottom:26px;}
+  .modules-group-head{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .modules-group-head .tag{font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14;}
+  .modules-group-head h4{font-size:16px; font-weight:700;}
+  .acc-item{border:1px solid var(--border); border-radius:18px; margin-bottom:10px; background:var(--surface); overflow:hidden;}
+  .acc-head{display:flex; align-items:center; gap:14px; padding:17px 20px; cursor:pointer; user-select:none;}
+  .acc-head .idx{color:var(--blue-2); font-size:13px; font-weight:700; flex:none; width:36px;}
+  .acc-head h5{font-size:14.5px; flex:1; font-weight:700;}
+  .acc-head .chev{transition:transform .25s ease; color:var(--text-mute); flex:none;}
+  .acc-item.open .chev{transform:rotate(45deg); color:var(--blue-2);}
+  .acc-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .acc-body-in{padding:0 20px 18px 70px; font-size:13.5px; color:var(--text-dim);}
+
+  /* ---------- modules showcase carousel ---------- */
+  .modules-showcase{
+    overflow:hidden; margin:0 0 44px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .modules-track{
+    display:flex; gap:22px; width:max-content;
+    animation:modulesScroll 30s linear infinite;
+    filter:blur(0.6px); transition:filter .3s ease;
+  }
+  .modules-showcase:hover .modules-track{filter:blur(0);}
+  .modules-track img{
+    width:30vw; max-width:340px; height:auto; flex:none;
+    border-radius:var(--radius-lg); border:1px solid var(--border);
+    box-shadow:0 20px 50px rgba(0,0,0,0.45);
+  }
+  @media (max-width:900px){ .modules-track img{width:44vw; max-width:320px;} }
+  @media (max-width:520px){ .modules-track img{width:70vw; max-width:300px;} }
+  @keyframes modulesScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- capability ---------- */
+  .capability{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  @media (max-width:720px){ .capability{grid-template-columns:1fr;} }
+  .cap-item{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px 20px;}
+  .cap-item .chk{flex:none; width:26px; height:26px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;}
+  .cap-item p{font-size:14.5px; color:var(--text-dim);}
+
+  /* ---------- mecanismo único ---------- */
+  .mechanism-grid{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:18px; align-items:center;}
+  @media (max-width:820px){ .mechanism-grid{grid-template-columns:1fr;} }
+  .mech-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px 24px; text-align:center;}
+  .mech-card .pct{font-size:40px; font-weight:800; letter-spacing:-0.02em; background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .mech-card h4{font-size:16px; font-weight:700; margin:10px 0 8px;}
+  .mech-card p{font-size:14px; color:var(--text-dim);}
+  .mech-plus{display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--text-mute); font-weight:800;}
+  @media (max-width:820px){ .mech-plus{display:none;} }
+
+  /* ---------- depoimentos ---------- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:900px){ .testi-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:22px 20px; display:flex; flex-direction:column; gap:12px;}
+  .testi-stars{color:var(--blue-2); font-size:13px; letter-spacing:2px;}
+  .testi-quote{font-size:14.5px; color:var(--text-dim); flex:1;}
+  .testi-who{display:flex; align-items:center; gap:10px;}
+  .testi-avatar{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--blue-2)); flex:none; display:flex; align-items:center; justify-content:center; font-weight:800; color:#0B0C14; font-size:13px;}
+  .testi-name{font-size:13.5px; font-weight:700;}
+  .testi-role{font-size:12px; color:var(--text-mute);}
+
+  /* ---------- autor / credibilidade ---------- */
+  .founder{display:flex; gap:36px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:40px; max-width:920px; margin:0 auto;}
+  @media (max-width:640px){ .founder{flex-direction:column; align-items:center; text-align:left; padding:28px 24px;} }
+  .founder-avatar{flex:none; width:120px; height:120px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg,var(--blue),var(--blue-2)); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:28px; color:#0B0C14;}
+  .founder-avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .founder-text{flex:1;}
+  .founder-text p{font-size:15px; line-height:1.7; color:var(--text-dim); margin-bottom:14px;}
+  .founder-text p:last-child{margin-bottom:0;}
+  .founder-text p:first-child{color:var(--text); font-size:15.5px;}
+
+  /* ---------- pricing table ---------- */
+  .plans-table-wrap{overflow-x:auto; border-radius:var(--radius-lg); border:1px solid var(--border);}
+  .plans-table{width:100%; border-collapse:collapse; background:var(--surface);}
+  .plans-table th, .plans-table td{padding:16px 20px; text-align:left; font-size:14px; border-bottom:1px solid var(--border-soft); color:var(--text-dim);}
+  .plans-table thead th{background:var(--surface-2); color:var(--text); font-size:12px; text-transform:uppercase; letter-spacing:0.04em; font-weight:700;}
+  .plans-table thead th.hl{color:var(--blue-2);}
+  .plans-table td.center, .plans-table th.center{text-align:center;}
+  .plans-table tbody tr:last-child td{border-bottom:none;}
+  .check-yes{color:var(--blue-2); font-weight:800;}
+  .check-no{color:var(--text-mute);}
+
+  /* ---------- bonus ---------- */
+  .bonus-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:860px){ .bonus-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .bonus-grid{grid-template-columns:1fr;} }
+  .bonus-card{background:var(--surface); border:1px dashed var(--border); border-radius:18px; padding:22px; position:relative;}
+  .bonus-card .free{position:absolute; top:-11px; right:14px; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; font-size:10.5px; font-weight:800; padding:4px 10px; border-radius:999px; text-transform:uppercase;}
+  .bonus-card h4{font-size:15.5px; margin:6px 0 8px; font-weight:700;}
+  .bonus-card p{font-size:13.5px; color:var(--text-dim);}
+
+  /* ---------- guarantee ---------- */
+  .guarantee{display:flex; gap:34px; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:42px; max-width:820px; margin:0 auto;}
+  @media (max-width:640px){ .guarantee{flex-direction:column; text-align:center; padding:32px 26px;} }
+  .g-badge{flex:none; width:120px; height:120px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:800; text-align:center; line-height:1; box-shadow:0 10px 50px rgba(124,135,247,0.4);}
+  .g-badge .n{font-size:34px;}
+  .g-badge .d{font-size:10.5px; margin-top:4px; text-transform:uppercase;}
+  .guarantee h3{font-size:22px; margin-bottom:10px; font-weight:800;}
+  .guarantee p{font-size:15px; color:var(--text-dim);}
+
+  /* ---------- pricing cards ---------- */
+  .price-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:820px; margin:0 auto;}
+  .price-grid.single{grid-template-columns:1fr; max-width:400px;}
+  @media (max-width:680px){ .price-grid{grid-template-columns:1fr;} }
+  .price-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:34px 28px; display:flex; flex-direction:column; transition:transform .35s var(--ease), box-shadow .35s var(--ease);}
+  .price-card:hover{transform:translateY(-4px); box-shadow:0 18px 50px rgba(0,0,0,0.4);}
+  .price-card.featured{border:1.5px solid var(--blue-2); position:relative; box-shadow:0 0 60px rgba(0,194,255,0.15);}
+  .price-card.featured::before{content:"MAIS ESCOLHIDO"; position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; font-size:10.5px; font-weight:800; padding:5px 14px; border-radius:999px; letter-spacing:0.06em;}
+  .price-card h3{font-size:19px; margin-bottom:6px; font-weight:800;}
+  .price-card .price-tag{display:flex; align-items:baseline; gap:6px; margin:16px 0 6px;}
+  .price-card .price-tag .cur{font-size:16px; color:var(--text-mute); font-weight:600;}
+  .price-card .price-tag .val{font-size:46px; font-weight:800;}
+  .price-card .price-tag .val{color:var(--text);}
+  .price-card.featured .price-tag .val{background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .price-card .price-note{font-size:12.5px; color:var(--text-mute); margin-bottom:22px;}
+  .price-card ul{margin-bottom:24px;}
+  .price-card li{font-size:14px; color:var(--text-dim); display:flex; gap:8px; margin-bottom:10px;}
+  .price-card li::before{content:"✓"; color:var(--blue-2); font-weight:800; flex:none;}
+  .price-card .btn{margin-top:auto;}
+  .secure-row{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-top:30px; font-size:12.5px; color:var(--text-mute);}
+
+  /* ---------- faq ---------- */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border-soft);}
+  .faq-head{display:flex; justify-content:space-between; align-items:center; padding:20px 4px; cursor:pointer;}
+  .faq-head h5{font-size:15.5px; font-weight:700; padding-right:20px;}
+  .faq-head .chev{flex:none; color:var(--text-mute); transition:transform .25s ease; font-size:20px;}
+  .faq-item.open .chev{transform:rotate(45deg); color:var(--blue-2);}
+  .faq-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-body-in{padding:0 4px 20px; font-size:14px; color:var(--text-dim);}
+
+  /* ---------- final cta ---------- */
+  .final-cta{text-align:center; position:relative;}
+  .final-cta h2{font-size:clamp(30px,5vw,50px); font-weight:800; letter-spacing:-0.03em; margin-bottom:18px;}
+  .final-cta p{max-width:520px; margin:0 auto 34px; color:var(--text-dim); font-size:16.5px;}
+  .final-cta-actions{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:center;}
+
+  footer{border-top:1px solid var(--border-soft); padding:36px 0; color:var(--text-mute);}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:13px;}
+  .foot-legal{margin-top:18px; font-size:12px; line-height:1.6; color:var(--text-mute);}
+
+  .reveal{opacity:0; transform:translateY(20px); filter:blur(7px); transition:opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0); filter:blur(0);}
+
+  ::selection{background:var(--blue); color:#fff;}
+  :focus-visible{outline:2px solid var(--blue-2); outline-offset:2px;}
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} }
+
+  /* ---------- centralização geral dos textos ---------- */
+  .hero-grid > div:first-child{ text-align:center; }
+  .hero p.lead{ margin-left:auto; margin-right:auto; }
+  .hero-checklist{ align-items:center; margin-left:auto; margin-right:auto; }
+  .hero-ctas{ justify-content:center; }
+  .hero-note{ justify-content:center; }
+
+  .market-copy{ text-align:center; }
+  .m-card{ flex-direction:column; align-items:center; text-align:center; }
+  .m-card .ic{ margin:0 auto; }
+
+  .whom-card h3{ text-align:center; }
+
+  .bento-card{ text-align:center; }
+  .bento-ic{ margin-left:auto; margin-right:auto; }
+
+  .step{ text-align:center; }
+  .step-num{ margin-left:auto; margin-right:auto; }
+
+  .course-card{ text-align:center; }
+  .course-tag{ margin-left:auto; margin-right:auto; }
+  .course-card li{ justify-content:center; }
+  .course-card ul{ text-align:center; }
+
+  .cap-item{ flex-direction:column; align-items:center; text-align:center; }
+
+  .bonus-card{ text-align:center; }
+
+  .price-card{ text-align:center; }
+  .price-card .price-tag{ justify-content:center; }
+  .price-card li{ justify-content:center; }
+  .price-card p{ margin-left:auto; margin-right:auto; }
+
+  .acc-head{ text-align:center; }
+  .acc-body-in{ text-align:center; }
+
+  .faq-head{ text-align:center; }
+  .faq-body-in{ text-align:center; }
+
+  .guarantee{ flex-direction:column; text-align:center; }
+
+  .plans-table th, .plans-table td{ text-align:center; }
+
+  .foot-row{ justify-content:center; text-align:center; }
+  .foot-legal{ text-align:center; }
+
+  .market-grid, .whom-grid{ justify-items:center; }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Vagas abertas por tempo limitado</span>
+      <div class="hero-logo">THUMB<span>$</span>GRINGA</div>
+      <h1>Eu fui de R$0 a <span class="grad-text">R$17.000 por mês</span> criando thumbnails gringas — sem precisar aparecer. E hoje vou te entregar o passo a passo atualizado de 2026.</h1>
+      <p class="lead">Aprenda o método pra criar thumbnails no padrão internacional e cobrar em dólar de canais gringos, mesmo começando do zero e sem falar inglês fluente.</p>
+      <ul class="hero-checklist">
+        <li><span class="mark">✓</span> Não precisa saber inglês</li>
+        <li><span class="mark">✓</span> Não precisa ter experiência com design</li>
+        <li><span class="mark">✓</span> Não precisa ter clientes ou seguidores</li>
+        <li><span class="mark">✓</span> Método prático utilizando Photoshop e inteligência artificial</li>
+      </ul>
+      <div class="hero-ctas">
+        <a href="#oferta" class="btn btn-primary">Quero aprender thumbnails gringas →</a>
+      </div>
+      <div class="hero-note">
+        <span><span class="mark">✓</span> Acesso <b>imediato</b></span>
+        <span><span class="mark">✓</span> Pagamento <b>único</b></span>
+        <span><span class="mark">✓</span> Comece <b>hoje</b></span>
+      </div>
+    </div>
+
+    <div class="hero-banner">
+      <div class="hero-ribbon">
+        <div class="hero-ribbon-track">
+          <span>✦ Vagas limitadas</span>
+          <span>✦ Método completo</span>
+          <span>✦ Ganhe em dólar hoje</span>
+          <span>✦ Vagas limitadas</span>
+          <span>✦ Método completo</span>
+          <span>✦ Ganhe em dólar hoje</span>
+          <span>✦ Vagas limitadas</span>
+          <span>✦ Método completo</span>
+          <span>✦ Ganhe em dólar hoje</span>
+          <span>✦ Vagas limitadas</span>
+          <span>✦ Método completo</span>
+          <span>✦ Ganhe em dólar hoje</span>
+        </div>
+      </div>
+      <img class="hero-bill" src="images/dollaer.png" alt="Nota de 100 mil dólares representando o potencial de ganho em dólar">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1B. EXEMPLOS REAIS ============ -->
+<section class="section examples-section" id="exemplos">
+  <div class="wrap">
+    <div class="kicker center"><span class="eyebrow"><span class="dot"></span> Exemplos reais</span></div>
+    <h2 class="section-title center">Thumbnails no padrão gringo</h2>
+    <p class="section-sub center">Deslize e veja alguns exemplos criados com o método.</p>
+  </div>
+  <div class="examples-carousel">
+    <button class="ex-arrow ex-prev" id="exPrev" aria-label="Exemplo anterior">‹</button>
+    <div class="ex-track" id="exTrack">
+      <div class="ex-card"><img src="images/thumb-detetive.jpg" alt="Thumbnail estilo investigação com mural de pistas"></div>
+      <div class="ex-card"><img src="images/thumb-arma.jpg" alt="Thumbnail estilo jogo de ação em primeira pessoa"></div>
+      <div class="ex-card"><img src="images/thumb-brinquedos.jpg" alt="Thumbnail de loja de brinquedos"></div>
+      <div class="ex-card"><img src="images/thumb-prospeccao.jpg" alt="Thumbnail sobre prospecção"></div>
+      <div class="ex-card"><img src="images/thumb-dinheiro.jpg" alt="Thumbnail mostrando resultado financeiro no celular"></div>
+      <div class="ex-card"><img src="images/thumb-cobra.jpg" alt="Thumbnail de aventura na selva"></div>
+      <div class="ex-card"><img src="images/thumb-zumbi.jpg" alt="Thumbnail estilo horror com reação de susto"></div>
+      <div class="ex-card"><img src="images/thumb-gta.jpg" alt="Thumbnail estilo GTA VI com reação de wanted"></div>
+      <div class="ex-card"><img src="images/thumb-tlou.jpg" alt="Thumbnail estilo sobrevivência pós-apocalíptica"></div>
+    </div>
+    <button class="ex-arrow ex-next" id="exNext" aria-label="Próximo exemplo">›</button>
+  </div>
+  <div class="ex-dots" id="exDots"></div>
+</section>
+
+<!-- ============ 1C. O MECANISMO ============ -->
+<section class="section" id="mecanismo">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> O mecanismo</span></div>
+    <h2 class="section-title center">O que realmente faz uma thumbnail vender (e não é sorte)</h2>
+    <p class="section-sub center">Não é sobre ter talento artístico. É sobre dominar essas 3 partes, nessa ordem.</p>
+    <div class="mechanism-grid">
+      <div class="mech-card reveal">
+        <div class="pct">60%</div>
+        <h4>Composição que para o scroll</h4>
+        <p>Cor, contraste, expressão e hierarquia visual — o que faz o cérebro do espectador clicar em menos de 1 segundo.</p>
+      </div>
+      <div class="mech-plus">+</div>
+      <div class="mech-card reveal">
+        <div class="pct">25%</div>
+        <h4>Produção rápida com IA</h4>
+        <p>Cutout, geração de cenário e upscale, sem gastar horas travado no Photoshop pra entregar no prazo.</p>
+      </div>
+      <div class="mech-plus">+</div>
+      <div class="mech-card reveal">
+        <div class="pct">15%</div>
+        <h4>Portfólio que fecha contrato</h4>
+        <p>Como transformar uma thumbnail boa em um cliente gringo pagando em dólar todo mês.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. O MERCADO ============ -->
+<section class="section" id="mercado">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> O mercado</span></div>
+    <h2 class="section-title center">Enquanto você pensa em real,<br>esse mercado já paga em dólar</h2>
+    <div class="market-grid">
+      <div class="market-copy reveal">
+        <p>Todos os dias, canais internacionais precisam de thumbnails capazes de prender atenção e gerar cliques.</p>
+        <p>Muitos criadores preferem terceirizar esse trabalho para designers que entendem o padrão visual usado lá fora, pagando em dólar, libra ou euro.</p>
+        <p>E você não precisa ser fluente em inglês nem ter diploma de design. Precisa dominar o método certo e saber onde encontrar esses clientes.</p>
+      </div>
+      <div class="market-cards">
+        <div class="m-card reveal"><div class="ic">$</div><div><h4>Pagamento em moeda forte</h4><p>Trabalho feito no Brasil, cobrado em dólar e recebido via plataformas internacionais.</p></div></div>
+        <div class="m-card reveal"><div class="ic">↻</div><div><h4>Demanda recorrente</h4><p>Canal ativo publica com frequência — e precisa de thumbnail nova a cada vídeo.</p></div></div>
+        <div class="m-card reveal"><div class="ic">▤</div><div><h4>Baixa barreira de entrada</h4><p>Não exige fluência em inglês nem diploma — exige domínio de um padrão visual.</p></div></div>
+        <div class="m-card reveal"><div class="ic">⇱</div><div><h4>Trabalho 100% remoto</h4><p>Você entrega um arquivo. Não importa o fuso horário nem onde você mora.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. POR QUE CANAIS PAGAM ============ -->
+<section class="section" id="porque">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Por dentro do negócio</span></div>
+    <h2 class="section-title center">Por que um canal paga por "só uma imagem"</h2>
+    <p class="section-sub center">Porque a thumbnail não é decoração — é o anúncio do vídeo. E é a única parte do conteúdo que precisa convencer alguém em menos de um segundo.</p>
+    <div class="bento">
+      <div class="bento-card reveal"><div class="bento-ic">01</div><h4>Primeira impressão em 1 segundo</h4><p>É a única peça que a audiência vê antes de decidir clicar ou passar direto.</p></div>
+      <div class="bento-card reveal"><div class="bento-ic">02</div><h4>Taxa de clique é dinheiro</h4><p>Mais gente clicando significa mais visualização, mais tempo de exibição e mais receita.</p></div>
+      <div class="bento-card reveal"><div class="bento-ic">03</div><h4>Criador quer focar em criar</h4><p>Quem grava e edita não quer (ou não sabe) parar pra desenhar — por isso terceiriza.</p></div>
+      <div class="bento-card reveal"><div class="bento-ic">04</div><h4>Consistência gera recorrência</h4><p>Canal com identidade visual forte fideliza — e quem cria essa identidade vira parceiro fixo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. PARA QUEM É ============ -->
+<section class="section" id="paraquem">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Pra quem é</span></div>
+    <h2 class="section-title center">Esse método combina com você? Vamos descobrir.</h2>
+    <div class="whom-grid">
+      <div class="whom-card whom-yes reveal">
+        <h3>É para você se:</h3>
+        <ul>
+          <li><span class="mark">✓</span> Já trabalha com design ou quer aprender do zero</li>
+          <li><span class="mark">✓</span> Busca uma renda extra ou principal em dólar</li>
+          <li><span class="mark">✓</span> Pode dedicar de 1 a 2 horas por dia</li>
+          <li><span class="mark">✓</span> Gosta de aprender com exercícios práticos</li>
+          <li><span class="mark">✓</span> Está disposto a construir seu portfólio</li>
+        </ul>
+      </div>
+      <div class="whom-card whom-no reveal">
+        <h3>Não é para você se:</h3>
+        <ul>
+          <li><span class="mark">✕</span> Procura dinheiro rápido sem precisar aprender</li>
+          <li><span class="mark">✕</span> Não pretende aplicar o conteúdo das aulas</li>
+          <li><span class="mark">✕</span> Espera resultados sem prática e dedicação</li>
+          <li><span class="mark">✕</span> Não tem interesse em design e comunicação visual</li>
+          <li><span class="mark">✕</span> Não pretende criar um portfólio profissional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. O MÉTODO ============ -->
+<section class="section" id="metodo">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> O método</span></div>
+    <h2 class="section-title center">Do zero ao primeiro cliente gringo em 4 etapas</h2>
+    <p class="section-sub center" style="margin-bottom:32px;">Um caminho prático para dominar o padrão visual, criar seu portfólio e começar a vender em dólar.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><h4>Fundamentos visuais</h4><p>Aprenda o padrão usado pelos canais gringos: composição, cores, tipografia e contraste para criar thumbnails que param o scroll.</p></div>
+      <div class="step reveal"><div class="step-num">2</div><h4>Produção com IA</h4><p>Use inteligência artificial para recortar imagens, criar cenários e acelerar sua produção sem perder qualidade profissional.</p></div>
+      <div class="step reveal"><div class="step-num">3</div><h4>Portfólio profissional</h4><p>Crie um conjunto estratégico de thumbnails que demonstra sua habilidade e desperta o interesse de possíveis clientes.</p></div>
+      <div class="step reveal"><div class="step-num">4</div><h4>Prospecção e vendas</h4><p>Aprenda onde encontrar canais gringos, como apresentar seu trabalho e fechar seus primeiros contratos em dólar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. OS TRÊS CURSOS ============ -->
+<section class="section" id="cursos">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> O que está incluso</span></div>
+    <h2 class="section-title center">3 cursos dentro de 1 método</h2>
+    <p class="section-sub center">Cada curso resolve uma parte específica do caminho: aprender, produzir e vender.</p>
+    <div class="courses">
+      <div class="course-card reveal">
+        <span class="course-tag">Curso 01</span>
+        <h3>Fundamentos da Thumbnail Gringa</h3>
+        <p>O padrão visual, de composição e de leitura rápida que diferencia uma thumbnail amadora de uma profissional.</p>
+        <ul>
+          <li>Composição, contraste e hierarquia visual</li>
+          <li>Tipografia de alto impacto e legibilidade</li>
+          <li>Cor e o efeito psicológico do clique</li>
+          <li>Recorte e destaque de rosto/objeto</li>
+        </ul>
+      </div>
+      <div class="course-card reveal">
+        <span class="course-tag">Curso 02</span>
+        <h3>IA na Prática para Thumbnails</h3>
+        <p>As ferramentas de inteligência artificial que cortam o tempo de produção sem cortar qualidade.</p>
+        <ul>
+          <li>Ferramentas de IA para o dia a dia do designer</li>
+          <li>Remoção de fundo e cutout automatizado</li>
+          <li>Geração de cenário e elementos com IA</li>
+          <li>Upscale e finalização em alta resolução</li>
+        </ul>
+      </div>
+      <div class="course-card reveal">
+        <span class="course-tag">Curso 03</span>
+        <h3>Portfólio & Clientes Internacionais</h3>
+        <p>Como se apresentar, onde encontrar canais gringos e como fechar e receber o pagamento.</p>
+        <ul>
+          <li>Montagem de portfólio que se vende sozinho</li>
+          <li>Onde encontrar canais que contratam</li>
+          <li>Abordagem em inglês, mesmo sem fluência</li>
+          <li>Precificação em dólar e recebimento internacional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. TODOS OS MÓDULOS ============ -->
+<section class="section" id="modulos">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Grade completa</span></div>
+    <h2 class="section-title center">Todos os módulos, um por um</h2>
+    <p class="section-sub center">Clique em cada módulo para ver o que você vai aprender.</p>
+
+    <div class="modules-showcase reveal">
+      <div class="modules-track">
+        <img src="images/modulo-01.jpg" alt="Módulo 01 — Fundamentos de uma thumbnail que gera cliques">
+        <img src="images/modulo-02-boas-vindas.jpg" alt="Boas-vindas ao método">
+        <img src="images/modulo-03-photoshop.jpg" alt="Módulo 03 — Conhecendo o Photoshop">
+        <img src="images/modulo-04-tratamento-pele.jpg" alt="Módulo 04 — Tratamento de pele profissional">
+        <img src="images/modulo-05-pratica.jpg" alt="Módulo 05 — Fazendo as thumbnails na prática">
+        <img src="images/modulo-ambientacao-iluminacao.jpg" alt="Módulo — Iluminação e ambientação">
+        <img src="images/modulo-thumb-ai.jpg" alt="Módulo — Thumb.AI">
+        <img src="images/modulo-portfolio-01.jpg" alt="Módulo — Portfólio que atrai canais gringos">
+        <img src="images/modulo-prospeccao-02.jpg" alt="Módulo — Como encontrar e analisar canais gringos">
+        <img src="images/modulo-prospeccao-03.jpg" alt="Módulo — Prospecção, precificação e clientes recorrentes em dólar">
+        <img src="images/modulo-prospeccao-04.jpg" alt="Módulo — Plano de ação Thumbdollar">
+        <img src="images/modulo-01.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-02-boas-vindas.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-03-photoshop.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-04-tratamento-pele.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-05-pratica.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-ambientacao-iluminacao.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-thumb-ai.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-portfolio-01.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-prospeccao-02.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-prospeccao-03.jpg" alt="" aria-hidden="true">
+        <img src="images/modulo-prospeccao-04.jpg" alt="" aria-hidden="true">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. O QUE O ALUNO SERÁ CAPAZ DE FAZER ============ -->
+<section class="section" id="capacidade">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Ao final do método</span></div>
+    <h2 class="section-title center">O que você será capaz de fazer</h2>
+    <div class="capability">
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Criar uma thumbnail no padrão internacional em menos de 30 minutos</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Usar IA para cutout, cenário e upscale sem depender de habilidade avançada de desenho</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Montar um portfólio com peças que demonstram domínio do padrão gringo</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Abordar um canal estrangeiro em inglês simples, mesmo sem fluência</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Precificar seu trabalho em dólar com segurança</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Receber pagamentos internacionais e transformar isso em renda recorrente</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. COMPARAÇÃO DE PLANOS ============ -->
+<section class="section" id="planos">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Acesso único</span></div>
+    <h2 class="section-title center">Um único plano, tudo incluso</h2>
+    <p class="section-sub center">Sem versão limitada. Por um pagamento único de R$ 97 você entra com o método completo.</p>
+    <div class="plans-table-wrap reveal">
+      <table class="plans-table">
+        <thead>
+          <tr>
+            <th>O que está incluso</th>
+            <th class="center hl">Acesso completo<br><span style="font-weight:400;">R$ 97</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Curso 01 — Fundamentos da Thumbnail Gringa</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Curso 02 — IA na Prática para Thumbnails</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Curso 03 — Portfólio & Clientes Internacionais</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Templates, fontes, PSDs e presets completos</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Lista de canais gringos que contratam</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Script de prospecção em inglês</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Planilha de precificação em dólar</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Comunidade de designers</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Certificado de conclusão</td><td class="center"><span class="check-yes">✓</span></td></tr>
+          <tr><td>Tempo de acesso</td><td class="center">Vitalício</td></tr>
+          <tr><td>Garantia</td><td class="center">7 dias</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. BÔNUS ============ -->
+<section class="section" id="bonus">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Incluso no seu acesso</span></div>
+    <h2 class="section-title center">Os bônus que aceleram sua chegada ao primeiro job</h2>
+    <div class="bonus-grid">
+      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>📋 Lista de canais gringos que contratam</h4><p>Uma seleção de canais internacionais que costumam terceirizar a criação de thumbnails.</p></div>
+      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>✉️ Script de prospecção em inglês</h4><p>Mensagens prontas para copiar, adaptar e enviar — mesmo sem fluência no idioma.</p></div>
+      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>🎨 Pacote de fontes, PSDs e presets</h4><p>Material pronto para acelerar sua produção desde a primeira thumbnail.</p></div>
+      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>💵 Planilha de precificação em dólar</h4><p>Calcule quanto cobrar por peça considerando seu tempo, câmbio e complexidade do job.</p></div>
+      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>👥 Comunidade de designers</h4><p>Espaço para trocar referências, pedir feedback e descobrir novas oportunidades.</p></div>
+      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>🎓 Certificado de conclusão</h4><p>Documento para reforçar sua credibilidade ao se apresentar para novos clientes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10B. DEPOIMENTOS ============ -->
+<!-- ⚠️ Substitua os depoimentos abaixo por avaliações reais de alunos antes de divulgar a página. -->
+<section class="section" id="depoimentos">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Provas sociais</span></div>
+    <h2 class="section-title center">O que dizem os alunos</h2>
+    <p class="section-sub center">Resultados de quem já aplicou o método.</p>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"[Depoimento real do aluno — resultado, tempo de aplicação e o que mudou pra ele]"</p>
+        <div class="testi-who"><div class="testi-avatar">A1</div><div><div class="testi-name">[Nome do aluno]</div><div class="testi-role">[Cidade / nicho]</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"[Depoimento real do aluno — resultado, tempo de aplicação e o que mudou pra ele]"</p>
+        <div class="testi-who"><div class="testi-avatar">A2</div><div><div class="testi-name">[Nome do aluno]</div><div class="testi-role">[Cidade / nicho]</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"[Depoimento real do aluno — resultado, tempo de aplicação e o que mudou pra ele]"</p>
+        <div class="testi-who"><div class="testi-avatar">A3</div><div><div class="testi-name">[Nome do aluno]</div><div class="testi-role">[Cidade / nicho]</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. GARANTIA ============ -->
+<section class="section" id="garantia">
+  <div class="wrap">
+    <div class="guarantee reveal">
+      <div class="g-badge"><span class="n">7</span><span class="d">Dias de<br>garantia</span></div>
+      <div>
+        <h3>Risco zero pra experimentar</h3>
+        <p>Acesse o método, assista às aulas e comece a praticar. Se em até 7 dias você sentir que não é pra você, é só pedir reembolso — sem burocracia e sem perguntas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12. OFERTA E PREÇO ============ -->
+<section class="section" id="oferta">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Oferta</span></div>
+    <h2 class="section-title center">Garanta seu acesso completo</h2>
+    <p class="section-sub center">Um pagamento único e você já entra com o método inteiro, sem versões limitadas.</p>
+    <div class="price-grid single">
+      <div class="price-card featured reveal">
+        <h3>Acesso Completo</h3>
+        <p style="font-size:13.5px; color:var(--text-mute);">O método inteiro, do zero ao primeiro cliente</p>
+        <div class="price-tag"><span class="cur">R$</span><span class="val">97</span></div>
+        <div class="price-note">ou 12x de R$ 10,03</div>
+        <ul>
+          <li>Cursos 01, 02 e 03 completos</li>
+          <li>Todos os templates, fontes e presets</li>
+          <li>Todos os bônus inclusos</li>
+          <li>Comunidade de designers</li>
+          <li>Certificado de conclusão</li>
+          <li>Acesso vitalício</li>
+        </ul>
+        <a href="https://pay.cakto.com.br/fejikaa_1005356" class="btn btn-primary btn-block">Quero garantir meu acesso</a>
+      </div>
+    </div>
+    <div class="secure-row">
+      <span>🔒 Pagamento seguro</span>
+      <span>⚡ Acesso imediato</span>
+      <span>↩ Garantia de 7 dias</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12B. QUEM ESTÁ POR TRÁS ============ -->
+<section class="section" id="autor">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Minha história</span></div>
+    <h2 class="section-title center">Quem está por trás do método</h2>
+    <div class="founder reveal">
+      <div class="founder-avatar"><img src="images/foto-perfil.jpg" alt="Foto de perfil"></div>
+      <div class="founder-text">
+        <p><b>Levy Nascimento</b>, criador do método THUMB$GRINGA.</p>
+        <p>Eu comecei literalmente do zero, sem dinheiro na conta, mas com um computador em casa e vontade de mudar minha realidade. Foi aí que descobri que poderia ganhar dinheiro através do design.</p>
+        <p>Aprendi a criar thumbnails e percebi uma oportunidade enorme no YouTube. Então pensei: se existem tantos canais precisando disso no Brasil, por que não trabalhar para canais gringos e ganhar em dólar?</p>
+        <p>Comecei a estudar esse mercado, desenvolvi uma forma de encontrar canais e clientes e transformei essa habilidade em uma fonte real de renda.</p>
+        <p>Desde os meus 15, 16 anos, venho vivendo desse mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13. FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Perguntas frequentes</span></div>
+    <h2 class="section-title center">Ainda com dúvida?</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-head"><h5>Preciso falar inglês fluente para trabalhar com canais gringos?</h5><span class="chev">+</span></div>
+        <div class="faq-body"><div class="faq-body-in">Não. O Curso 03 ensina exatamente o vocabulário mínimo e os modelos de mensagem para abordar e negociar mesmo sem fluência.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-head"><h5>Preciso saber desenhar ou já ter experiência com design?</h5><span class="chev">+</span></div>
+        <div class="faq-body"><div class="faq-body-in">Não. O método parte do zero e ensina um padrão visual replicável, além de ferramentas de IA que reduzem a dependência de habilidade manual de desenho.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-head"><h5>Quais programas eu preciso ter?</h5><span class="chev">+</span></div>
+        <div class="faq-body"><div class="faq-body-in">O método pode ser aplicado com ferramentas gratuitas ou pagas, como Canva e Photoshop, além das ferramentas de IA apresentadas no Curso 02.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-head"><h5>Funciona pelo celular?</h5><span class="chev">+</span></div>
+        <div class="faq-body"><div class="faq-body-in">As aulas podem ser assistidas pelo celular. Para produção das thumbnails, recomendamos um computador ou tablet para mais conforto.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-head"><h5>Quanto tempo leva para ver resultado?</h5><span class="chev">+</span></div>
+        <div class="faq-body"><div class="faq-body-in">Depende do seu ritmo de prática e prospecção. O método foi desenhado para que, seguindo as etapas, você tenha portfólio pronto e comece a prospectar ainda nas primeiras semanas.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-head"><h5>Como funciona a garantia?</h5><span class="chev">+</span></div>
+        <div class="faq-body"><div class="faq-body-in">Você tem 7 dias corridos a partir da compra para solicitar reembolso integral, sem necessidade de justificativa.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-head"><h5>Como recebo o pagamento dos clientes gringos?</h5><span class="chev">+</span></div>
+        <div class="faq-body"><div class="faq-body-in">O Curso 03 mostra as opções mais usadas para receber pagamentos internacionais e converter para real.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14. CHAMADA FINAL ============ -->
+<section class="section final-cta">
+  <div class="wrap">
+    <h2>Sua próxima thumbnail<br>pode valer em <span class="grad-text">dólar</span>.</h2>
+    <p>O método está pronto. As ferramentas estão acessíveis. Falta só você decidir começar hoje.</p>
+    <div class="final-cta-actions">
+      <a href="https://pay.cakto.com.br/fejikaa_1005356" class="btn btn-primary">Quero mudar de vida com o design →</a>
+      <a href="https://wa.me/5585996736058" target="_blank" rel="noopener" class="btn btn-ghost">💬 Suporte via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="nav-logo" style="font-size:14px;">THUMB<span>$</span>GRINGA</div>
+      <div>Suporte: contatolevinvest@gmail.com</div>
+    </div>
+    <p class="foot-legal">
+      thumbsgringas — Todos os direitos reservados.<br>
+      Este produto é um treinamento educacional. Resultados dependem de fatores individuais como dedicação, prática e mercado, e não são garantidos.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // exemplos reais carousel
+  (() => {
+    const track = document.getElementById('exTrack');
+    const dotsWrap = document.getElementById('exDots');
+    const prevBtn = document.getElementById('exPrev');
+    const nextBtn = document.getElementById('exNext');
+    if(!track) return;
+    const cards = [...track.querySelectorAll('.ex-card')];
+
+    let activeIndex = 0;
+
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'dot-btn' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Ir para exemplo ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = dotsWrap.querySelectorAll('.dot-btn');
+
+    const setActive = (i) => {
+      activeIndex = i;
+      dots.forEach((d, di) => d.classList.toggle('active', di === i));
+    };
+
+    const goTo = (i) => {
+      const idx = (i + cards.length) % cards.length;
+      const card = cards[idx];
+      const delta = card.getBoundingClientRect().left - track.getBoundingClientRect().left;
+      const trackPadLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+      track.scrollTo({left: track.scrollLeft + delta - trackPadLeft, behavior:'smooth'});
+    };
+
+    const ratios = new Array(cards.length).fill(0);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        ratios[cards.indexOf(entry.target)] = entry.intersectionRatio;
+      });
+      let best = 0;
+      ratios.forEach((r, i) => { if(r > ratios[best]) best = i; });
+      setActive(best);
+    }, {root: track, threshold: [0, 0.25, 0.5, 0.75, 1]});
+    cards.forEach(c => observer.observe(c));
+
+    prevBtn.addEventListener('click', () => goTo(activeIndex - 1));
+    nextBtn.addEventListener('click', () => goTo(activeIndex + 1));
+
+    // autoplay: desliza sozinho, pausa quando o usuário interage
+    let autoTimer = null;
+    let resumeTimer = null;
+    const startAuto = () => { stopAuto(); autoTimer = setInterval(() => goTo(activeIndex + 1), 3200); };
+    const stopAuto = () => { if(autoTimer){ clearInterval(autoTimer); autoTimer = null; } };
+    const pauseThenResume = () => {
+      stopAuto();
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(startAuto, 4500);
+    };
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+    track.addEventListener('touchstart', pauseThenResume, {passive:true});
+    track.addEventListener('pointerdown', pauseThenResume);
+
+    // só roda o autoplay enquanto a seção está visível na tela
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { entry.isIntersecting ? startAuto() : stopAuto(); });
+    }, {threshold: 0.2});
+    visibilityObserver.observe(document.getElementById('exemplos'));
+  })();
+
+  // accordions (modules)
+  document.querySelectorAll('.acc-item').forEach(item => {
+    const head = item.querySelector('.acc-head');
+    const body = item.querySelector('.acc-body');
+    head.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.acc-item.open').forEach(other => {
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.acc-body').style.maxHeight = null;
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      body.style.maxHeight = !isOpen ? body.scrollHeight + 'px' : null;
+    });
+  });
+
+  // faq accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const head = item.querySelector('.faq-head');
+    const body = item.querySelector('.faq-body');
+    head.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-body').style.maxHeight = null;
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      body.style.maxHeight = !isOpen ? body.scrollHeight + 'px' : null;
+    });
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // parallax sutil dos glows de fundo (efeito de motion ao rolar)
+  const g1 = document.querySelector('.glow-1');
+  const g2 = document.querySelector('.glow-2');
+  const g3 = document.querySelector('.glow-3');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if(g1) g1.style.transform = `translate3d(0, ${y * 0.06}px, 0)`;
+        if(g2) g2.style.transform = `translate3d(0, ${y * -0.04}px, 0)`;
+        if(g3) g3.style.transform = `translate3d(0, ${y * 0.03}px, 0)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+</script>
+
+</body>
+</html>
