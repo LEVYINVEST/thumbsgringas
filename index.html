@@ -138,6 +138,7 @@
   .hero-grid > div:first-child{grid-area:text;}
   .hero h1{font-size:clamp(30px,4.4vw,46px); font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin:0 0 12px;}
   .hero p.lead{font-size:16px; line-height:1.45; color:var(--text-dim); max-width:520px; margin-bottom:20px;}
+  .hero-vsl{max-width:640px; margin:0 0 26px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); box-shadow:0 20px 60px rgba(0,0,0,0.5); background:var(--surface);}
   .hero-checklist{display:flex; flex-direction:column; gap:9px; margin-bottom:24px;}
   .hero-checklist li{display:flex; align-items:center; gap:10px; font-size:14.5px; font-weight:600; color:var(--text);}
   .hero-checklist .mark{flex:none; width:22px; height:22px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;}
@@ -190,6 +191,7 @@
   .hero-grid > div:first-child > *:nth-child(5){animation-delay:.49s;}
   .hero-grid > div:first-child > *:nth-child(6){animation-delay:.6s;}
   .hero-grid > div:first-child > *:nth-child(7){animation-delay:.71s;}
+  .hero-grid > div:first-child > *:nth-child(8){animation-delay:.82s;}
   /* ---------- bento grid ---------- */
   .bento{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
   @media (max-width:900px){ .bento{grid-template-columns:repeat(2,1fr);} }
@@ -427,6 +429,7 @@
   /* ---------- centralização geral dos textos ---------- */
   .hero-grid > div:first-child{ text-align:center; }
   .hero p.lead{ margin-left:auto; margin-right:auto; }
+  .hero-vsl{ margin-left:auto; margin-right:auto; }
   .hero-checklist{ align-items:center; margin-left:auto; margin-right:auto; }
   .hero-ctas{ justify-content:center; }
   .hero-note{ justify-content:center; }
@@ -488,6 +491,10 @@
       <div class="hero-logo">THUMB<span>$</span>GRINGA</div>
       <h1>Eu fui de R$0 a <span class="grad-text">R$17.000 por mês</span> criando thumbnails gringas — sem precisar aparecer. E hoje vou te entregar o passo a passo atualizado de 2026.</h1>
       <p class="lead">Aprenda o método pra criar thumbnails no padrão internacional e cobrar em dólar de canais gringos, mesmo começando do zero e sem falar inglês fluente.</p>
+      <div class="hero-vsl">
+        <script src="https://app.litevideo.net/p.js" async></script>
+        <lt-v2 v="258bf836-9759-4f0e-8240-e6c893b4fecd" sc="0" ph="6" ct="[[]]"></lt-v2>
+      </div>
       <ul class="hero-checklist">
         <li><span class="mark">✓</span> Não precisa saber inglês</li>
         <li><span class="mark">✓</span> Não precisa ter experiência com design</li>
