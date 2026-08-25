@@ -153,7 +153,8 @@
   @media (max-width:720px){ .examples-section{padding:0 0 70px;} }
   .examples-carousel{position:relative;}
   .ex-track{
-    display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory;
+    display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch; touch-action:pan-x;
     padding:8px 24px 20px; scrollbar-width:none; -ms-overflow-style:none;
   }
   .ex-track::-webkit-scrollbar{display:none;}
@@ -1005,7 +1006,7 @@
       let best = 0;
       ratios.forEach((r, i) => { if(r > ratios[best]) best = i; });
       setActive(best);
-    }, {root: track, threshold: [0, 0.25, 0.5, 0.75, 1]});
+    }, {root: track, threshold: [0, 0.5, 1]});
     cards.forEach(c => observer.observe(c));
 
     prevBtn.addEventListener('click', () => goTo(activeIndex - 1));
