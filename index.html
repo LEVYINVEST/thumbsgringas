@@ -214,7 +214,7 @@
   /* ---------- market section ---------- */
   .market-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:start;}
   @media (max-width:900px){ .market-grid{grid-template-columns:1fr;} }
-  .market-copy p{margin:0 auto 16px; max-width:480px; color:var(--text-dim); font-size:16px; line-height:1.65;}
+  .market-proof img{width:100%; max-width:420px; display:block; margin:0 auto; border-radius:var(--radius-lg);}
   .market-cards{display:grid; gap:12px;}
   .m-card{
     background:var(--surface); border:1px solid var(--border); border-radius:18px;
@@ -435,7 +435,6 @@
   .hero-ctas{ justify-content:center; }
   .hero-note{ justify-content:center; }
 
-  .market-copy{ text-align:center; }
   .m-card{ flex-direction:column; align-items:center; text-align:center; }
   .m-card .ic{ margin:0 auto; }
 
@@ -559,7 +558,37 @@
   <div class="ex-dots" id="exDots"></div>
 </section>
 
-<!-- ============ 1C. O MECANISMO ============ -->
+<!-- ============ 1C. PARA QUEM É ============ -->
+<section class="section" id="paraquem">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Pra quem é</span></div>
+    <h2 class="section-title center">Esse método combina com você? Vamos descobrir.</h2>
+    <div class="whom-grid">
+      <div class="whom-card whom-yes reveal">
+        <h3>É para você se:</h3>
+        <ul>
+          <li><span class="mark">✓</span> Já trabalha com design ou quer aprender do zero</li>
+          <li><span class="mark">✓</span> Busca uma renda extra ou principal em dólar</li>
+          <li><span class="mark">✓</span> Pode dedicar de 1 a 2 horas por dia</li>
+          <li><span class="mark">✓</span> Gosta de aprender com exercícios práticos</li>
+          <li><span class="mark">✓</span> Está disposto a construir seu portfólio</li>
+        </ul>
+      </div>
+      <div class="whom-card whom-no reveal">
+        <h3>Não é para você se:</h3>
+        <ul>
+          <li><span class="mark">✕</span> Procura dinheiro rápido sem precisar aprender</li>
+          <li><span class="mark">✕</span> Não pretende aplicar o conteúdo das aulas</li>
+          <li><span class="mark">✕</span> Espera resultados sem prática e dedicação</li>
+          <li><span class="mark">✕</span> Não tem interesse em design e comunicação visual</li>
+          <li><span class="mark">✕</span> Não pretende criar um portfólio profissional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1D. O MECANISMO ============ -->
 <section class="section" id="mecanismo">
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> O mecanismo</span></div>
@@ -593,10 +622,8 @@
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> O mercado</span></div>
     <h2 class="section-title center">Enquanto você pensa em real,<br>esse mercado já paga em dólar</h2>
     <div class="market-grid">
-      <div class="market-copy reveal">
-        <p>Todos os dias, canais internacionais precisam de thumbnails capazes de prender atenção e gerar cliques.</p>
-        <p>Muitos criadores preferem terceirizar esse trabalho para designers que entendem o padrão visual usado lá fora, pagando em dólar, libra ou euro.</p>
-        <p>E você não precisa ser fluente em inglês nem ter diploma de design. Precisa dominar o método certo e saber onde encontrar esses clientes.</p>
+      <div class="market-proof reveal">
+        <img src="images/resultados-reais.webp" alt="Notificações reais de pagamentos recebidos em dólar por thumbnails" loading="lazy">
       </div>
       <div class="market-cards">
         <div class="m-card reveal"><div class="ic">$</div><div><h4>Pagamento em moeda forte</h4><p>Trabalho feito no Brasil, cobrado em dólar e recebido via plataformas internacionais.</p></div></div>
@@ -619,36 +646,6 @@
       <div class="bento-card reveal"><div class="bento-ic">02</div><h4>Taxa de clique é dinheiro</h4><p>Mais gente clicando significa mais visualização, mais tempo de exibição e mais receita.</p></div>
       <div class="bento-card reveal"><div class="bento-ic">03</div><h4>Criador quer focar em criar</h4><p>Quem grava e edita não quer (ou não sabe) parar pra desenhar — por isso terceiriza.</p></div>
       <div class="bento-card reveal"><div class="bento-ic">04</div><h4>Consistência gera recorrência</h4><p>Canal com identidade visual forte fideliza — e quem cria essa identidade vira parceiro fixo.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 4. PARA QUEM É ============ -->
-<section class="section" id="paraquem">
-  <div class="wrap">
-    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Pra quem é</span></div>
-    <h2 class="section-title center">Esse método combina com você? Vamos descobrir.</h2>
-    <div class="whom-grid">
-      <div class="whom-card whom-yes reveal">
-        <h3>É para você se:</h3>
-        <ul>
-          <li><span class="mark">✓</span> Já trabalha com design ou quer aprender do zero</li>
-          <li><span class="mark">✓</span> Busca uma renda extra ou principal em dólar</li>
-          <li><span class="mark">✓</span> Pode dedicar de 1 a 2 horas por dia</li>
-          <li><span class="mark">✓</span> Gosta de aprender com exercícios práticos</li>
-          <li><span class="mark">✓</span> Está disposto a construir seu portfólio</li>
-        </ul>
-      </div>
-      <div class="whom-card whom-no reveal">
-        <h3>Não é para você se:</h3>
-        <ul>
-          <li><span class="mark">✕</span> Procura dinheiro rápido sem precisar aprender</li>
-          <li><span class="mark">✕</span> Não pretende aplicar o conteúdo das aulas</li>
-          <li><span class="mark">✕</span> Espera resultados sem prática e dedicação</li>
-          <li><span class="mark">✕</span> Não tem interesse em design e comunicação visual</li>
-          <li><span class="mark">✕</span> Não pretende criar um portfólio profissional</li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
