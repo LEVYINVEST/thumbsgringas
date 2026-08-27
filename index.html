@@ -116,7 +116,7 @@
     background:linear-gradient(90deg,var(--blue),var(--blue-2));
     box-shadow:0 16px 44px rgba(0,113,252,0.35);
   }
-  .hero-ribbon-track{display:flex; gap:36px; width:max-content; padding:10px 0; animation:ribbonScroll 16s linear infinite;}
+  .hero-ribbon-track{display:flex; gap:36px; width:max-content; padding:10px 0; animation:ribbonScroll 16s linear infinite; will-change:transform;}
   .hero-ribbon-track span{font-size:13px; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color:#0B0C14; white-space:nowrap;}
   @keyframes ribbonScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
   .hero-bill{
@@ -296,15 +296,12 @@
   /* ---------- modules showcase carousel ---------- */
   .modules-showcase{
     overflow:hidden; margin:0 0 44px;
-    -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
   .modules-track{
     display:flex; gap:14px; width:max-content;
     animation:modulesScroll 24s linear infinite;
-    filter:blur(0.6px); transition:filter .3s ease;
+    will-change:transform;
   }
-  .modules-showcase:hover .modules-track{filter:blur(0);}
   .modules-track img{
     width:18vw; max-width:190px; height:auto; flex:none;
     border-radius:var(--radius-md); border:1px solid var(--border);
@@ -646,7 +643,7 @@
     <h2 class="section-title center">Por que um canal paga por "só uma imagem"</h2>
     <p class="section-sub center">Porque a thumbnail não é decoração — é o anúncio do vídeo. E é a única parte do conteúdo que precisa convencer alguém em menos de um segundo.</p>
     <div class="bento">
-      <div class="bento-card reveal"><div class="bento-ic">01</div><h4>Primeira impressão em 1 segundo</h4><p>É a única peça que a audiência vê antes de decidir clicar ou passar direto.</p></div>
+      <div class="bento-card reveal"><div class="bento-ic">01</div><h4>Primeira impressão em 1 segundo</h4><p>É a única thumb que a audiência vê antes de decidir clicar ou passar direto.</p></div>
       <div class="bento-card reveal"><div class="bento-ic">02</div><h4>Taxa de clique é dinheiro</h4><p>Mais gente clicando significa mais visualização, mais tempo de exibição e mais receita.</p></div>
       <div class="bento-card reveal"><div class="bento-ic">03</div><h4>Criador quer focar em criar</h4><p>Quem grava e edita não quer (ou não sabe) parar pra desenhar — por isso terceiriza.</p></div>
       <div class="bento-card reveal"><div class="bento-ic">04</div><h4>Consistência gera recorrência</h4><p>Canal com identidade visual forte fideliza — e quem cria essa identidade vira parceiro fixo.</p></div>
@@ -749,7 +746,7 @@
     <div class="capability">
       <div class="cap-item reveal"><span class="chk">✓</span><p>Criar uma thumbnail no padrão internacional em menos de 30 minutos</p></div>
       <div class="cap-item reveal"><span class="chk">✓</span><p>Usar IA para cutout, cenário e upscale sem depender de habilidade avançada de desenho</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Montar um portfólio com peças que demonstram domínio do padrão gringo</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Montar um portfólio com thumbs que demonstram domínio do padrão gringo</p></div>
       <div class="cap-item reveal"><span class="chk">✓</span><p>Abordar um canal estrangeiro em inglês simples, mesmo sem fluência</p></div>
       <div class="cap-item reveal"><span class="chk">✓</span><p>Precificar seu trabalho em dólar com segurança</p></div>
       <div class="cap-item reveal"><span class="chk">✓</span><p>Receber pagamentos internacionais e transformar isso em renda recorrente</p></div>
@@ -798,7 +795,7 @@
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>📋 Lista de canais gringos que contratam</h4><p>Uma seleção de canais internacionais que costumam terceirizar a criação de thumbnails.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>✉️ Script de prospecção em inglês</h4><p>Mensagens prontas para copiar, adaptar e enviar — mesmo sem fluência no idioma.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>🎨 Pacote de fontes, PSDs e presets</h4><p>Material pronto para acelerar sua produção desde a primeira thumbnail.</p></div>
-      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>💵 Planilha de precificação em dólar</h4><p>Calcule quanto cobrar por peça considerando seu tempo, câmbio e complexidade do job.</p></div>
+      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>💵 Planilha de precificação em dólar</h4><p>Calcule quanto cobrar por thumb considerando seu tempo, câmbio e complexidade do job.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>👥 Comunidade de designers</h4><p>Espaço para trocar referências, pedir feedback e descobrir novas oportunidades.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>🎓 Certificado de conclusão</h4><p>Documento para reforçar sua credibilidade ao se apresentar para novos clientes.</p></div>
     </div>
