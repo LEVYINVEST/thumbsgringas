@@ -76,7 +76,7 @@
   .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2));}
   .kicker{display:flex; justify-content:center; margin-bottom:20px;}
 
-  .section{padding:100px 0; content-visibility:auto; contain-intrinsic-size:auto 700px;}
+  .section{padding:100px 0;}
   @media (max-width:720px){ .section{padding:70px 0;} }
   .metodo-divider{padding:40px 0;}
   .metodo-divider .section-title{margin-bottom:0;}
@@ -162,7 +162,7 @@
   .examples-carousel{position:relative;}
   .ex-track{
     display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x proximity;
-    -webkit-overflow-scrolling:touch; touch-action:pan-x;
+    -webkit-overflow-scrolling:touch; touch-action:pan-x pan-y;
     padding:8px 24px 20px; scrollbar-width:none; -ms-overflow-style:none;
   }
   .ex-track::-webkit-scrollbar{display:none;}
@@ -334,7 +334,7 @@
   /* ---------- depoimentos ---------- */
   .testi-track{
     display:flex; align-items:flex-start; gap:16px; overflow-x:auto; scroll-snap-type:x proximity;
-    -webkit-overflow-scrolling:touch; touch-action:pan-x;
+    -webkit-overflow-scrolling:touch; touch-action:pan-x pan-y;
     padding:8px 24px 20px; scrollbar-width:none; -ms-overflow-style:none;
   }
   .testi-track::-webkit-scrollbar{display:none;}
