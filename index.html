@@ -331,7 +331,7 @@
 
   /* ---------- depoimentos ---------- */
   .testi-track{
-    display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x proximity;
+    display:flex; align-items:flex-start; gap:16px; overflow-x:auto; scroll-snap-type:x proximity;
     -webkit-overflow-scrolling:touch; touch-action:pan-x;
     padding:8px 24px 20px; scrollbar-width:none; -ms-overflow-style:none;
   }
@@ -340,8 +340,15 @@
     flex:none; width:260px; scroll-snap-align:start;
     border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border);
     box-shadow:0 16px 40px rgba(0,0,0,0.4);
+    background-image:url(images/depoimentos-sprite.webp); background-repeat:no-repeat; background-position:0% 0%;
   }
-  .testi-card img{width:100%; height:auto; display:block;}
+  .testi-card:nth-child(1){aspect-ratio:500/525; background-size:700% 102.1%; background-position-x:0%;}
+  .testi-card:nth-child(2){aspect-ratio:500/530; background-size:700% 101.1%; background-position-x:16.6667%;}
+  .testi-card:nth-child(3){aspect-ratio:500/350; background-size:700% 153.1%; background-position-x:33.3333%;}
+  .testi-card:nth-child(4){aspect-ratio:500/536; background-size:700% 100%; background-position-x:50%;}
+  .testi-card:nth-child(5){aspect-ratio:500/158; background-size:700% 339.2%; background-position-x:66.6667%;}
+  .testi-card:nth-child(6){aspect-ratio:500/213; background-size:700% 251.6%; background-position-x:83.3333%;}
+  .testi-card:nth-child(7){aspect-ratio:500/285; background-size:700% 188.1%; background-position-x:100%;}
   @media (max-width:520px){ .testi-card{width:74vw;} .testi-track{padding:8px 18px 20px;} }
 
   /* ---------- autor / credibilidade ---------- */
@@ -722,22 +729,6 @@
   </div>
 </section>
 
-<!-- ============ 8. O QUE O ALUNO SERÁ CAPAZ DE FAZER ============ -->
-<section class="section" id="capacidade">
-  <div class="wrap">
-    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Ao final do método</span></div>
-    <h2 class="section-title center">O que você será capaz de fazer</h2>
-    <div class="capability">
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Criar uma thumbnail no padrão internacional em menos de 30 minutos</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Usar IA para cutout, cenário e upscale sem depender de habilidade avançada de desenho</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Montar um portfólio com thumbs que demonstram domínio do padrão gringo</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Abordar um canal estrangeiro em inglês simples, mesmo sem fluência</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Precificar seu trabalho em dólar com segurança</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Receber pagamentos internacionais e transformar isso em renda recorrente</p></div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ 9. COMPARAÇÃO DE PLANOS ============ -->
 <section class="section" id="planos">
   <div class="wrap">
@@ -794,13 +785,13 @@
     <p class="section-sub center">Resultados de quem já aplicou o método.</p>
   </div>
   <div class="testi-track">
-    <div class="testi-card reveal"><img src="images/depoimento-01.webp" alt="Depoimento de aluno" loading="lazy"></div>
-    <div class="testi-card reveal"><img src="images/depoimento-02.webp" alt="Depoimento de aluno" loading="lazy"></div>
-    <div class="testi-card reveal"><img src="images/depoimento-03.webp" alt="Depoimento de aluno" loading="lazy"></div>
-    <div class="testi-card reveal"><img src="images/depoimento-04.webp" alt="Depoimento de aluno" loading="lazy"></div>
-    <div class="testi-card reveal"><img src="images/depoimento-05.webp" alt="Depoimento de aluno" loading="lazy"></div>
-    <div class="testi-card reveal"><img src="images/depoimento-06.webp" alt="Depoimento de aluno" loading="lazy"></div>
-    <div class="testi-card reveal"><img src="images/depoimento-07.webp" alt="Depoimento de aluno" loading="lazy"></div>
+    <div class="testi-card reveal" role="img" aria-label="Depoimento de aluno 1"></div>
+    <div class="testi-card reveal" role="img" aria-label="Depoimento de aluno 2"></div>
+    <div class="testi-card reveal" role="img" aria-label="Depoimento de aluno 3"></div>
+    <div class="testi-card reveal" role="img" aria-label="Depoimento de aluno 4"></div>
+    <div class="testi-card reveal" role="img" aria-label="Depoimento de aluno 5"></div>
+    <div class="testi-card reveal" role="img" aria-label="Depoimento de aluno 6"></div>
+    <div class="testi-card reveal" role="img" aria-label="Depoimento de aluno 7"></div>
   </div>
 </section>
 
