@@ -302,16 +302,14 @@
     overflow:hidden; margin:0 0 44px;
   }
   .modules-track{
-    display:flex; gap:14px; width:max-content;
+    display:flex; gap:0; width:max-content;
     animation:modulesScroll 24s linear infinite;
   }
   .modules-track img{
-    width:18vw; max-width:190px; height:auto; flex:none;
-    border-radius:var(--radius-md); border:1px solid var(--border);
-    box-shadow:0 12px 30px rgba(0,0,0,0.4);
+    height:37.9vw; max-height:400px; width:auto; flex:none;
   }
-  @media (max-width:900px){ .modules-track img{width:26vw; max-width:170px;} }
-  @media (max-width:520px){ .modules-track img{width:32vw; max-width:150px;} }
+  @media (max-width:900px){ .modules-track img{height:54.8vw; max-height:358px;} }
+  @media (max-width:520px){ .modules-track img{height:67.4vw; max-height:316px;} }
   @keyframes modulesScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
   /* ---------- capability ---------- */
@@ -717,28 +715,8 @@
 
     <div class="modules-showcase reveal">
       <div class="modules-track">
-        <img src="images/modulo-01.webp" alt="Módulo 01 — Fundamentos de uma thumbnail que gera cliques" loading="lazy">
-        <img src="images/modulo-02-boas-vindas.webp" alt="Boas-vindas ao método" loading="lazy">
-        <img src="images/modulo-03-photoshop.webp" alt="Módulo 03 — Conhecendo o Photoshop" loading="lazy">
-        <img src="images/modulo-04-tratamento-pele.webp" alt="Módulo 04 — Tratamento de pele profissional" loading="lazy">
-        <img src="images/modulo-05-pratica.webp" alt="Módulo 05 — Fazendo as thumbnails na prática" loading="lazy">
-        <img src="images/modulo-ambientacao-iluminacao.webp" alt="Módulo — Iluminação e ambientação" loading="lazy">
-        <img src="images/modulo-thumb-ai.webp" alt="Módulo — Thumb.AI" loading="lazy">
-        <img src="images/modulo-portfolio-01.webp" alt="Módulo — Portfólio que atrai canais gringos" loading="lazy">
-        <img src="images/modulo-prospeccao-02.webp" alt="Módulo — Como encontrar e analisar canais gringos" loading="lazy">
-        <img src="images/modulo-prospeccao-03.webp" alt="Módulo — Prospecção, precificação e clientes recorrentes em dólar" loading="lazy">
-        <img src="images/modulo-prospeccao-04.webp" alt="Módulo — Plano de ação Thumbdollar" loading="lazy">
-        <img src="images/modulo-01.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-02-boas-vindas.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-03-photoshop.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-04-tratamento-pele.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-05-pratica.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-ambientacao-iluminacao.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-thumb-ai.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-portfolio-01.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-prospeccao-02.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-prospeccao-03.webp" alt="" aria-hidden="true" loading="lazy">
-        <img src="images/modulo-prospeccao-04.webp" alt="" aria-hidden="true" loading="lazy">
+        <img src="images/modulos-sprite.webp" alt="Prévia dos 11 módulos do curso: fundamentos, boas-vindas, Photoshop, tratamento de pele, prática, ambientação e iluminação, thumb.ai, portfólio e prospecção" loading="lazy">
+        <img src="images/modulos-sprite.webp" alt="" aria-hidden="true" loading="lazy">
       </div>
     </div>
   </div>
