@@ -147,7 +147,7 @@
   .hero h1{font-size:clamp(30px,4.4vw,46px); font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin:0 0 12px;}
   .hero p.lead{font-size:16px; line-height:1.45; color:var(--text-dim); max-width:520px; margin-bottom:20px;}
   .hero-vsl{max-width:640px; margin:0 0 26px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); box-shadow:0 20px 60px rgba(0,0,0,0.5); background:var(--surface);}
-  .hero-checklist{display:flex; flex-direction:row; flex-wrap:wrap; gap:8px 18px; margin-bottom:24px; list-style:none;}
+  .hero-checklist{display:flex; flex-direction:row; flex-wrap:wrap; justify-content:center; gap:8px 18px; margin-bottom:24px; list-style:none;}
   .hero-checklist li{display:flex; align-items:center; gap:10px; font-size:14.5px; font-weight:600; color:var(--text);}
   .hero-checklist .mark{flex:none; width:22px; height:22px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;}
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
@@ -170,8 +170,17 @@
     flex:none; width:320px; aspect-ratio:16/9; border-radius:var(--radius-md); overflow:hidden;
     scroll-snap-align:start; border:1px solid var(--border);
     box-shadow:0 20px 50px rgba(0,0,0,0.45);
+    background-image:url(images/exemplos-sprite.webp); background-repeat:no-repeat; background-size:900% 100%;
   }
-  .ex-card img{width:100%; height:100%; object-fit:cover; display:block;}
+  .ex-card:nth-child(1){background-position-x:0%;}
+  .ex-card:nth-child(2){background-position-x:12.5%;}
+  .ex-card:nth-child(3){background-position-x:25%;}
+  .ex-card:nth-child(4){background-position-x:37.5%;}
+  .ex-card:nth-child(5){background-position-x:50%;}
+  .ex-card:nth-child(6){background-position-x:62.5%;}
+  .ex-card:nth-child(7){background-position-x:75%;}
+  .ex-card:nth-child(8){background-position-x:87.5%;}
+  .ex-card:nth-child(9){background-position-x:100%;}
   @media (max-width:900px){ .ex-card{width:64vw;} }
   @media (max-width:520px){ .ex-card{width:82vw;} .ex-track{padding:8px 18px 20px;} }
   .ex-arrow{
@@ -321,15 +330,6 @@
   .cap-item .chk{flex:none; width:26px; height:26px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;}
   .cap-item p{font-size:14.5px; color:var(--text-dim);}
 
-  /* ---------- mecanismo único ---------- */
-  .mechanism-grid{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:18px; align-items:center;}
-  @media (max-width:820px){ .mechanism-grid{grid-template-columns:1fr;} }
-  .mech-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px 24px; text-align:center;}
-  .mech-card .pct{font-size:40px; font-weight:800; letter-spacing:-0.02em; background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .mech-card h4{font-size:16px; font-weight:700; margin:10px 0 8px;}
-  .mech-card p{font-size:14px; color:var(--text-dim);}
-  .mech-plus{display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--text-mute); font-weight:800;}
-  @media (max-width:820px){ .mech-plus{display:none;} }
 
   /* ---------- depoimentos ---------- */
   .testi-track{
@@ -493,14 +493,13 @@
     <div>
       <span class="eyebrow"><span class="dot"></span> Vagas abertas por tempo limitado</span>
       <div class="hero-logo">THUMB<span>$</span>GRINGA</div>
-      <h1>Eu fui de R$0 a <span class="grad-text">R$17.000 por mês</span> criando thumbnails gringas — sem precisar aparecer. E hoje vou te entregar o passo a passo atualizado de 2026.</h1>
+      <h1>Eu fui de R$0 a <span class="grad-text">R$17.000 por mês</span> criando thumbnails gringas. E hoje vou te entregar o passo a passo atualizado de 2026.</h1>
       <p class="lead">Aprenda o método pra criar thumbnails no padrão internacional e cobrar em dólar de canais gringos, mesmo começando do zero e sem falar inglês fluente.</p>
       <div class="hero-vsl">
         <script src="https://app.litevideo.net/p.js" async></script>
         <lt-v2 v="258bf836-9759-4f0e-8240-e6c893b4fecd" sc="0" ph="6" ct="[[]]"></lt-v2>
       </div>
       <ul class="hero-checklist">
-        <li><span class="mark">✓</span> Sem saber inglês</li>
         <li><span class="mark">✓</span> Sem experiência</li>
         <li><span class="mark">✓</span> Sem clientes ou seguidores</li>
         <li><span class="mark">✓</span> Método com IA e Photoshop</li>
@@ -547,15 +546,15 @@
   <div class="examples-carousel">
     <button class="ex-arrow ex-prev" id="exPrev" aria-label="Exemplo anterior">‹</button>
     <div class="ex-track" id="exTrack">
-      <div class="ex-card"><img src="images/thumb-detetive.webp" alt="Thumbnail estilo investigação com mural de pistas" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-arma.webp" alt="Thumbnail estilo jogo de ação em primeira pessoa" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-brinquedos.webp" alt="Thumbnail de loja de brinquedos" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-prospeccao.webp" alt="Thumbnail sobre prospecção" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-dinheiro.webp" alt="Thumbnail mostrando resultado financeiro no celular" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-cobra.webp" alt="Thumbnail de aventura na selva" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-zumbi.webp" alt="Thumbnail estilo horror com reação de susto" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-gta.webp" alt="Thumbnail estilo GTA VI com reação de wanted" loading="lazy"></div>
-      <div class="ex-card"><img src="images/thumb-tlou.webp" alt="Thumbnail estilo sobrevivência pós-apocalíptica" loading="lazy"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail estilo investigação com mural de pistas"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail estilo jogo de ação em primeira pessoa"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail de loja de brinquedos"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail sobre prospecção"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail mostrando resultado financeiro no celular"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail de aventura na selva"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail estilo horror com reação de susto"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail estilo GTA VI com reação de wanted"></div>
+      <div class="ex-card" role="img" aria-label="Thumbnail estilo sobrevivência pós-apocalíptica"></div>
     </div>
     <button class="ex-arrow ex-next" id="exNext" aria-label="Próximo exemplo">›</button>
   </div>
@@ -606,34 +605,6 @@
         <div class="m-card reveal"><div class="ic">↻</div><div><h4>Demanda recorrente</h4><p>Canal ativo publica com frequência — e precisa de thumbnail nova a cada vídeo.</p></div></div>
         <div class="m-card reveal"><div class="ic">▤</div><div><h4>Baixa barreira de entrada</h4><p>Não exige fluência em inglês nem diploma — exige domínio de um padrão visual.</p></div></div>
         <div class="m-card reveal"><div class="ic">⇱</div><div><h4>Trabalho 100% remoto</h4><p>Você entrega um arquivo. Não importa o fuso horário nem onde você mora.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 1D. O MECANISMO ============ -->
-<section class="section" id="mecanismo">
-  <div class="wrap">
-    <div class="kicker"><span class="eyebrow"><span class="dot"></span> O mecanismo</span></div>
-    <h2 class="section-title center">O que realmente faz uma thumbnail vender (e não é sorte)</h2>
-    <p class="section-sub center">Não é sobre ter talento artístico. É sobre dominar essas 3 partes, nessa ordem.</p>
-    <div class="mechanism-grid">
-      <div class="mech-card reveal">
-        <div class="pct">60%</div>
-        <h4>Composição que para o scroll</h4>
-        <p>Cor, contraste, expressão e hierarquia para gerar o clique.</p>
-      </div>
-      <div class="mech-plus">+</div>
-      <div class="mech-card reveal">
-        <div class="pct">25%</div>
-        <h4>Produção rápida com IA</h4>
-        <p>Crie cenas, recortes e acabamentos em minutos.</p>
-      </div>
-      <div class="mech-plus">+</div>
-      <div class="mech-card reveal">
-        <div class="pct">15%</div>
-        <h4>Portfólio que fecha contrato</h4>
-        <p>Transforme boas thumbs em clientes pagando em dólar.</p>
       </div>
     </div>
   </div>
