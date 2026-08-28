@@ -147,7 +147,7 @@
   .hero h1{font-size:clamp(30px,4.4vw,46px); font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin:0 0 12px;}
   .hero p.lead{font-size:16px; line-height:1.45; color:var(--text-dim); max-width:520px; margin-bottom:20px;}
   .hero-vsl{max-width:640px; margin:0 0 26px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); box-shadow:0 20px 60px rgba(0,0,0,0.5); background:var(--surface);}
-  .hero-checklist{display:flex; flex-direction:column; gap:9px; margin-bottom:24px;}
+  .hero-checklist{display:flex; flex-direction:row; flex-wrap:wrap; gap:8px 18px; margin-bottom:24px; list-style:none;}
   .hero-checklist li{display:flex; align-items:center; gap:10px; font-size:14.5px; font-weight:600; color:var(--text);}
   .hero-checklist .mark{flex:none; width:22px; height:22px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;}
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
@@ -313,8 +313,10 @@
   @keyframes modulesScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
   /* ---------- capability ---------- */
-  .capability{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  .capability{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:40px;}
   @media (max-width:720px){ .capability{grid-template-columns:1fr;} }
+  .included-title{font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:0.03em; color:var(--text-dim); text-align:center; margin-bottom:18px;}
+  .included-title.bonus-title{color:var(--blue-2);}
   .cap-item{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px 20px;}
   .cap-item .chk{flex:none; width:26px; height:26px; border-radius:50%; background:linear-gradient(90deg,var(--blue),var(--blue-2)); color:#0B0C14; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;}
   .cap-item p{font-size:14.5px; color:var(--text-dim);}
@@ -362,15 +364,6 @@
   .founder-text p:first-child{color:var(--text); font-size:15.5px;}
 
   /* ---------- pricing table ---------- */
-  .plans-table-wrap{overflow-x:auto; border-radius:var(--radius-lg); border:1px solid var(--border);}
-  .plans-table{width:100%; border-collapse:collapse; background:var(--surface);}
-  .plans-table th, .plans-table td{padding:16px 20px; text-align:left; font-size:14px; border-bottom:1px solid var(--border-soft); color:var(--text-dim);}
-  .plans-table thead th{background:var(--surface-2); color:var(--text); font-size:12px; text-transform:uppercase; letter-spacing:0.04em; font-weight:700;}
-  .plans-table thead th.hl{color:var(--blue-2);}
-  .plans-table td.center, .plans-table th.center{text-align:center;}
-  .plans-table tbody tr:last-child td{border-bottom:none;}
-  .check-yes{color:var(--blue-2); font-weight:800;}
-  .check-no{color:var(--text-mute);}
 
   /* ---------- bonus ---------- */
   .bonus-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
@@ -480,7 +473,6 @@
 
   .guarantee{ flex-direction:column; text-align:center; }
 
-  .plans-table th, .plans-table td{ text-align:center; }
 
   .foot-row{ justify-content:center; text-align:center; }
   .foot-legal{ text-align:center; }
@@ -508,10 +500,10 @@
         <lt-v2 v="258bf836-9759-4f0e-8240-e6c893b4fecd" sc="0" ph="6" ct="[[]]"></lt-v2>
       </div>
       <ul class="hero-checklist">
-        <li><span class="mark">✓</span> Não precisa saber inglês</li>
-        <li><span class="mark">✓</span> Não precisa ter experiência com design</li>
-        <li><span class="mark">✓</span> Não precisa ter clientes ou seguidores</li>
-        <li><span class="mark">✓</span> Método prático utilizando Photoshop e inteligência artificial</li>
+        <li><span class="mark">✓</span> Sem saber inglês</li>
+        <li><span class="mark">✓</span> Sem experiência</li>
+        <li><span class="mark">✓</span> Sem clientes ou seguidores</li>
+        <li><span class="mark">✓</span> Método com IA e Photoshop</li>
       </ul>
       <div class="hero-ctas">
         <a href="#oferta" class="btn btn-primary">Quero ganhar em dólar →</a>
@@ -734,45 +726,25 @@
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> Acesso único</span></div>
     <h2 class="section-title center">Um único plano, tudo incluso</h2>
-    <p class="section-sub center">Sem versão limitada. Por um pagamento único de R$ 97 você entra com o método completo.</p>
-    <div class="plans-table-wrap reveal">
-      <table class="plans-table">
-        <thead>
-          <tr>
-            <th>O que está incluso</th>
-            <th class="center hl">Acesso completo<br><span style="font-weight:400;">R$ 97</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Curso 01 — Fundamentos da Thumbnail Gringa</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Curso 02 — IA na Prática para Thumbnails</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Curso 03 — Portfólio & Clientes Internacionais</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Templates, fontes, PSDs e presets completos</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Lista de canais gringos que contratam</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Script de prospecção em inglês</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Planilha de precificação em dólar</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Comunidade de designers</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Certificado de conclusão</td><td class="center"><span class="check-yes">✓</span></td></tr>
-          <tr><td>Tempo de acesso</td><td class="center">Vitalício</td></tr>
-          <tr><td>Garantia</td><td class="center">7 dias</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
+    <p class="section-sub center">Sem versão limitada. Por um pagamento único de R$ 97 você entra com o método completo + todos os bônus abaixo.</p>
 
-<!-- ============ 10. BÔNUS ============ -->
-<section class="section" id="bonus">
-  <div class="wrap">
-    <div class="kicker"><span class="eyebrow"><span class="dot"></span> Incluso no seu acesso</span></div>
-    <h2 class="section-title center">Os bônus que aceleram sua chegada ao primeiro job</h2>
+    <h3 class="included-title">O método completo</h3>
+    <div class="capability">
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Curso 01 — Fundamentos da Thumbnail Gringa</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Curso 02 — IA na Prática para Thumbnails</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Curso 03 — Portfólio & Clientes Internacionais</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Acesso vitalício, sem mensalidade</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>7 dias de garantia incondicional</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Certificado de conclusão</p></div>
+    </div>
+
+    <h3 class="included-title bonus-title">+ 5 bônus exclusivos inclusos no mesmo acesso</h3>
     <div class="bonus-grid">
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>📋 Lista de canais gringos que contratam</h4><p>Uma seleção de canais internacionais que costumam terceirizar a criação de thumbnails.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>✉️ Script de prospecção em inglês</h4><p>Mensagens prontas para copiar, adaptar e enviar — mesmo sem fluência no idioma.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>🎨 Pacote de fontes, PSDs e presets</h4><p>Material pronto para acelerar sua produção desde a primeira thumbnail.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>💵 Planilha de precificação em dólar</h4><p>Calcule quanto cobrar por thumb considerando seu tempo, câmbio e complexidade do job.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>👥 Comunidade de designers</h4><p>Espaço para trocar referências, pedir feedback e descobrir novas oportunidades.</p></div>
-      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>🎓 Certificado de conclusão</h4><p>Documento para reforçar sua credibilidade ao se apresentar para novos clientes.</p></div>
     </div>
   </div>
 </section>
