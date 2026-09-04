@@ -61,7 +61,7 @@
   }
 
   /* ambient glow background */
-  .glow{position:fixed; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:0; opacity:0.55;}
+  .glow{position:fixed; border-radius:50%; filter:blur(60px); pointer-events:none; z-index:0; opacity:0.55; will-change:auto;}
   .glow-1{width:620px; height:620px; top:-220px; left:-160px; background:radial-gradient(circle, rgba(124,135,247,0.55), transparent 70%);}
   .glow-2{width:560px; height:560px; top:520px; right:-220px; background:radial-gradient(circle, rgba(0,194,255,0.35), transparent 70%);}
   .glow-3{width:640px; height:640px; bottom:-260px; left:10%; background:radial-gradient(circle, rgba(124,135,247,0.28), transparent 70%);}
@@ -199,8 +199,8 @@
   .ex-dots .dot-btn.active{background:var(--blue-2); width:16px; border-radius:4px;}
 
   @keyframes heroIn{
-    from{opacity:0; transform:translateY(20px); filter:blur(10px);}
-    to{opacity:1; transform:translateY(0); filter:blur(0);}
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
   }
   .hero-grid > div:first-child > *{opacity:0; animation:heroIn .9s var(--ease) forwards;}
   .hero-grid > div:first-child > *:nth-child(1){animation-delay:.05s;}
@@ -993,23 +993,6 @@
     marqueeObserver.observe(parent);
   });
 
-  // parallax sutil dos glows de fundo (efeito de motion ao rolar)
-  const g1 = document.querySelector('.glow-1');
-  const g2 = document.querySelector('.glow-2');
-  const g3 = document.querySelector('.glow-3');
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if(!ticking){
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if(g1) g1.style.transform = `translate3d(0, ${y * 0.06}px, 0)`;
-        if(g2) g2.style.transform = `translate3d(0, ${y * -0.04}px, 0)`;
-        if(g3) g3.style.transform = `translate3d(0, ${y * 0.03}px, 0)`;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, {passive:true});
 </script>
 
 </body>
