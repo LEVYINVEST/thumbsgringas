@@ -2,6 +2,16 @@
 <html lang="pt-BR">
 <head>
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+<script>
+  // Pixel da UTMify (igual ao do quiz), com o mesmo filtro de bots/teste.
+  if(!/[?&]tgtest=1/.test(location.search) && /levydesigner\.com$/.test(location.hostname) && !navigator.webdriver && !/(bot\/|bot;|bot\)| bot|-bot|crawl|spider|headless|facebookexternalhit|meta-externalads|meta-externalagent|lighthouse|pagespeed|preview|python|curl\/|wget|scanner|phantom|puppeteer|selenium)/i.test(navigator.userAgent)){
+    window.pixelId = "6acb53c756007fac6eb7e4ef";
+    var utmifyPx = document.createElement("script");
+    utmifyPx.async = true; utmifyPx.defer = true;
+    utmifyPx.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+    (document.head || document.documentElement).appendChild(utmifyPx);
+  }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
@@ -13,6 +23,10 @@
 <link rel="dns-prefetch" href="https://images.converteai.net">
 <link rel="dns-prefetch" href="https://license.vturb.com">
 <title>Crie Thumbnails Gringas Profissionais e Venda em Dólar</title>
+<!-- Checkout próprio: conecta e baixa a página do checkout em segundo plano pra abrir na hora no clique.
+     Só PREFETCH (baixa o HTML), não prerender: prerender rodaria o pixel do checkout sem clique. -->
+<link rel="preconnect" href="https://pay.levydesigner.com">
+<script type="speculationrules">{"prefetch":[{"where":{"href_matches":"https://pay.levydesigner.com/*"},"eagerness":"eager"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap">
@@ -182,17 +196,19 @@
     box-shadow:0 20px 50px rgba(0,0,0,0.45);
     background-image:url(images/exemplos-sprite-v2.webp); background-repeat:no-repeat; background-size:1100% 100%;
   }
-  .ex-card:nth-child(1){background-position-x:0%;}
-  .ex-card:nth-child(2){background-position-x:10%;}
-  .ex-card:nth-child(3){background-position-x:20%;}
-  .ex-card:nth-child(4){background-position-x:30%;}
-  .ex-card:nth-child(5){background-position-x:40%;}
-  .ex-card:nth-child(6){background-position-x:50%;}
-  .ex-card:nth-child(7){background-position-x:60%;}
-  .ex-card:nth-child(8){background-position-x:70%;}
-  .ex-card:nth-child(9){background-position-x:80%;}
-  .ex-card:nth-child(10){background-position-x:90%;}
-  .ex-card:nth-child(11){background-position-x:100%;}
+  .ex-card:nth-child(2){background-position-x:0%;}
+  .ex-card:nth-child(3){background-position-x:10%;}
+  .ex-card:nth-child(4){background-position-x:20%;}
+  .ex-card:nth-child(5){background-position-x:30%;}
+  .ex-card:nth-child(6){background-position-x:40%;}
+  .ex-card:nth-child(7){background-position-x:50%;}
+  .ex-card:nth-child(8){background-position-x:60%;}
+  .ex-card:nth-child(9){background-position-x:70%;}
+  .ex-card:nth-child(10){background-position-x:80%;}
+  .ex-card:nth-child(11){background-position-x:90%;}
+  .ex-card:nth-child(12){background-position-x:100%;}
+  .ex-card.ex-own{background-size:cover; background-position:center;}
+  .ex-card.ex-re{background-image:url(images/thumb-resident-evil.webp);}
   @media (max-width:900px){ .ex-card{width:64vw;} }
   @media (max-width:520px){ .ex-card{width:82vw;} .ex-track{padding:8px 18px 20px;} }
   .ex-arrow{
@@ -378,7 +394,7 @@
   /* ---------- pricing table ---------- */
 
   /* ---------- bonus ---------- */
-  .bonus-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .bonus-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
   @media (max-width:860px){ .bonus-grid{grid-template-columns:1fr 1fr;} }
   @media (max-width:560px){ .bonus-grid{grid-template-columns:1fr;} }
   .bonus-card{background:var(--surface); border:1px dashed var(--border); border-radius:18px; padding:22px; position:relative;}
@@ -492,6 +508,72 @@
   .foot-legal{ text-align:center; }
 
   .market-grid, .whom-grid{ justify-items:center; }
+  .whom-card ul{ display:flex; flex-direction:column; align-items:center; }
+  .whom-card li{ justify-content:center; text-align:center; }
+  .founder{ flex-direction:column; align-items:center; text-align:center; }
+  .founder-text, .founder-text p{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* ---------- cursos simplificados ---------- */
+  .courses-simple .course-card{align-items:center; padding:30px 24px;}
+  .courses-simple .course-ic{width:68px; height:68px; margin:0 auto 14px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px;
+    background:linear-gradient(135deg,rgba(124,135,247,0.25),rgba(0,194,255,0.18)); border:1.5px solid var(--blue-2);}
+  .courses-simple .course-card h3{font-size:22px; margin-top:4px;}
+  .courses-simple .course-card > p{font-size:16px; color:#DCE1EC; margin-bottom:0;}
+
+  .hero .hero-checklist{margin-top:18px; margin-bottom:0;}
+  /* ---------- role pra baixo ---------- */
+  .scroll-down{display:flex; flex-direction:column; align-items:center; gap:2px; margin:22px auto 0; width:max-content;
+    font-size:15px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue-2); text-decoration:none;}
+  .scroll-down .arr{font-size:26px; line-height:1; animation:sdBounce 1.4s ease-in-out infinite;}
+  @keyframes sdBounce{0%,100%{transform:translateY(0);} 50%{transform:translateY(7px);}}
+
+  /* ---------- pra quem é: mais visível ---------- */
+  #paraquem .whom-card{padding:30px 26px; border-width:1.5px;}
+  #paraquem .whom-yes{border-color:var(--blue-2); box-shadow:0 0 40px rgba(0,194,255,0.15);}
+  #paraquem .whom-card h3{font-size:22px; margin-bottom:18px;}
+  #paraquem .whom-yes h3{color:var(--blue-2);}
+  #paraquem .whom-card li{font-size:17px; font-weight:700; color:#fff; line-height:1.4; margin-bottom:14px;}
+  #paraquem .whom-no li{color:#C4CBDC; font-weight:600;}
+  #paraquem .whom-card li .mark{width:24px; height:24px; font-size:13px;}
+
+  /* ---------- selo celular + IA (headline) ---------- */
+  .hero-ai{display:inline-flex; align-items:center; gap:8px; margin:4px auto 16px; padding:9px 16px; border-radius:999px;
+    background:linear-gradient(90deg,rgba(124,135,247,0.22),rgba(0,194,255,0.18)); border:1.5px solid var(--blue-2);
+    font-size:15px; font-weight:800; color:#fff; line-height:1.25; box-shadow:0 0 28px rgba(0,194,255,0.25);}
+  .hero-ai .ph{font-size:18px;}
+  .hero-ai b{color:var(--blue-2);}
+
+  /* ---------- módulos bônus ---------- */
+  .bmod-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; max-width:1000px; margin:0 auto;}
+  @media (max-width:900px){ .bmod-grid{grid-template-columns:repeat(2,1fr); gap:14px;} }
+  .bmod{position:relative; background:var(--surface); border:1.5px dashed var(--blue-2); border-radius:18px; overflow:hidden; text-align:center; display:flex; flex-direction:column;}
+  .bmod img{width:100%; aspect-ratio:2/3; object-fit:cover; display:block;}
+  .bmod .tag{align-self:center; margin:10px auto; background:linear-gradient(90deg,#FFB020,#FF6A3D); color:#0B0C14; font-size:12px; font-weight:900; letter-spacing:0.06em; padding:5px 12px; border-radius:999px; box-shadow:0 4px 14px rgba(0,0,0,0.4); white-space:nowrap;}
+  .bmod-body{padding:14px 12px 16px;}
+  .bmod h4{font-size:15px; font-weight:800; margin-bottom:6px; line-height:1.25;}
+  .bmod p{font-size:13px; color:var(--text-dim); line-height:1.4;}
+  .bmod .bvalor{display:block; margin-top:10px; line-height:1.25;}
+  .bmod .bvalor s{display:block; font-size:12.5px; font-weight:600; color:var(--text-mute);}
+  .bmod .bvalor b{display:block; color:var(--blue-2); font-size:16px; font-weight:900; white-space:nowrap;}
+  .bmod .gratis{display:inline-block; margin-top:10px; font-size:12px; font-weight:800; color:var(--blue-2); text-transform:uppercase; letter-spacing:0.04em;}
+  .bmod-note{max-width:640px; margin:26px auto 0; text-align:center; font-size:14.5px; color:var(--text-dim);}
+  .bmod-note b{color:#fff;}
+
+  /* ---------- promoção primeira turma (pagamento) ---------- */
+  .promo-banner{max-width:520px; margin:0 auto 34px; text-align:center; border-radius:18px; padding:16px 18px;
+    background:linear-gradient(90deg,#FFB020,#FF6A3D); color:#0B0C14; box-shadow:0 10px 40px rgba(255,106,61,0.3);}
+  .promo-banner .t1{font-size:13px; font-weight:900; letter-spacing:0.08em; text-transform:uppercase;}
+  .promo-banner .t2{font-size:clamp(20px,5.4vw,26px); font-weight:900; line-height:1.2; margin-top:4px;}
+  .promo-banner .t2 s{opacity:0.75;}
+  .promo-banner .nw{white-space:nowrap;}
+  .price-card .promo-old{margin-top:16px; font-size:15px; color:var(--text-dim); font-weight:600;}
+  .price-card .promo-old s{font-size:26px; font-weight:800; color:#FF6A6A; text-decoration-thickness:3px; margin-left:4px;}
+  .price-card .promo-por{font-size:15px; font-weight:800; color:#fff; text-transform:uppercase; letter-spacing:0.05em; margin-top:6px;}
+  .price-card .price-tag .val{font-size:58px;}
+  .price-card .price-tag .cents{margin-left:-6px; font-size:26px; font-weight:800; background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .promo-save{display:inline-block; margin:2px auto 10px; background:rgba(0,194,255,0.14); border:1px solid var(--blue-2); color:var(--blue-2); font-size:13px; font-weight:800; padding:6px 14px; border-radius:999px;}
+  .promo-warn{margin-top:12px; font-size:12.5px; color:var(--text-mute);}
+  .promo-warn b{color:#FFB020;}
 </style>
 </head>
 <body>
@@ -505,27 +587,19 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow"><span class="dot"></span> Vagas abertas por tempo limitado</span>
       <div class="hero-logo">THUMB<span>$</span>GRINGA</div>
       <h1>Eu fui de R$0 a <span class="grad-text">R$17.000 por mês</span> criando thumbnails gringas. E hoje vou te entregar o passo a passo atualizado de 2026.</h1>
-      <p class="lead">Aprenda o método pra criar thumbnails no padrão internacional e cobrar em dólar de canais gringos, mesmo começando do zero e sem falar inglês fluente.</p>
+      <div class="hero-ai"><span class="ph">📱</span> <span>Dá pra fazer <b>só pelo celular</b>, com <b>I.A.</b></span></div>
       <div class="hero-vsl">
         <vturb-smartplayer id="vid-6acf0eb33d3e6766dd6570d7" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
         <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/e1f1bb52-f5a3-45c8-bd2c-8ae3b16ee5d3/players/6acf0eb33d3e6766dd6570d7/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
       </div>
       <ul class="hero-checklist">
-        <li><span class="mark">✓</span> Sem experiência</li>
-        <li><span class="mark">✓</span> Sem clientes ou seguidores</li>
-        <li><span class="mark">✓</span> Método com IA e Photoshop</li>
+        <li><span class="mark">✓</span> Sem seguidores ou clientes</li>
+        <li><span class="mark">✓</span> Sem computador caro</li>
+        <li><span class="mark">✓</span> Sem precisar aparecer</li>
       </ul>
-      <div class="hero-ctas">
-        <a href="#oferta" class="btn btn-primary">Quero ganhar em dólar →</a>
-      </div>
-      <div class="hero-note">
-        <span><span class="mark">✓</span> Acesso <b>imediato</b></span>
-        <span><span class="mark">✓</span> Pagamento <b>único</b></span>
-        <span><span class="mark">✓</span> Comece <b>hoje</b></span>
-      </div>
+      <a href="#paraquem" class="scroll-down">Role pra baixo<span class="arr">↓</span></a>
     </div>
 
     <div class="hero-banner">
@@ -560,6 +634,7 @@
   <div class="examples-carousel">
     <button class="ex-arrow ex-prev" id="exPrev" aria-label="Exemplo anterior">‹</button>
     <div class="ex-track" id="exTrack">
+      <div class="ex-card ex-own ex-re" role="img" aria-label="Thumbnail de Resident Evil Requiem com reação de medo e a protagonista ao fundo"></div>
       <div class="ex-card" role="img" aria-label="Thumbnail de reação a uma série com a protagonista ao fundo"></div>
       <div class="ex-card" role="img" aria-label="Thumbnail de jogo de carros e bola com reação de surpresa"></div>
       <div class="ex-card" role="img" aria-label="Thumbnail de mistério em uma floresta com ritual à noite"></div>
@@ -586,21 +661,19 @@
       <div class="whom-card whom-yes reveal">
         <h3>É para você se:</h3>
         <ul>
-          <li><span class="mark">✓</span> Já trabalha com design ou quer aprender do zero</li>
-          <li><span class="mark">✓</span> Busca uma renda extra ou principal em dólar</li>
-          <li><span class="mark">✓</span> Pode dedicar de 1 a 2 horas por dia</li>
-          <li><span class="mark">✓</span> Gosta de aprender com exercícios práticos</li>
-          <li><span class="mark">✓</span> Está disposto a construir seu portfólio</li>
+          <li><span class="mark">✓</span> Já tentou de tudo pra ganhar dinheiro na internet e nada deu certo</li>
+          <li><span class="mark">✓</span> Quer ganhar em dólar trabalhando de casa</li>
+          <li><span class="mark">✓</span> Está começando do zero, sem saber nada de design</li>
+          <li><span class="mark">✓</span> Só tem um celular ou computador e quer começar mesmo assim</li>
+          <li><span class="mark">✓</span> Consegue separar 1 a 2 horas por dia</li>
         </ul>
       </div>
       <div class="whom-card whom-no reveal">
         <h3>Não é para você se:</h3>
         <ul>
-          <li><span class="mark">✕</span> Procura dinheiro rápido sem precisar aprender</li>
-          <li><span class="mark">✕</span> Não pretende aplicar o conteúdo das aulas</li>
-          <li><span class="mark">✕</span> Espera resultados sem prática e dedicação</li>
-          <li><span class="mark">✕</span> Não tem interesse em design e comunicação visual</li>
-          <li><span class="mark">✕</span> Não pretende criar um portfólio profissional</li>
+          <li><span class="mark">✕</span> Quer dinheiro fácil sem aprender nada</li>
+          <li><span class="mark">✕</span> Não vai colocar em prática o que aprender</li>
+          <li><span class="mark">✕</span> Não quer separar nem 1 hora por dia</li>
         </ul>
       </div>
     </div>
@@ -652,41 +725,26 @@
 <section class="section" id="cursos">
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> O que está incluso</span></div>
-    <h2 class="section-title center">3 cursos dentro de 1 método</h2>
-    <p class="section-sub center">Cada curso resolve uma parte específica do caminho: aprender, produzir e vender.</p>
-    <div class="courses">
+    <h2 class="section-title center">3 cursos, 3 passos simples</h2>
+    <p class="section-sub center">Aprenda, crie e venda. É só seguir na ordem.</p>
+    <div class="courses courses-simple">
       <div class="course-card reveal">
-        <span class="course-tag">Curso 01</span>
+        <div class="course-ic">🎨</div>
+        <span class="course-tag">Curso 01 · Aprenda</span>
         <h3>Fundamentos da Thumbnail Gringa</h3>
-        <p>O padrão visual, de composição e de leitura rápida que diferencia uma thumbnail amadora de uma profissional.</p>
-        <ul>
-          <li>Composição, contraste e hierarquia visual</li>
-          <li>Tipografia de alto impacto e legibilidade</li>
-          <li>Cor e o efeito psicológico do clique</li>
-          <li>Recorte e destaque de rosto/objeto</li>
-        </ul>
+        <p>Pra você criar thumbs no padrão gringo, mesmo começando do zero.</p>
       </div>
       <div class="course-card reveal">
-        <span class="course-tag">Curso 02</span>
-        <h3>IA na Prática para Thumbnails</h3>
-        <p>As ferramentas de inteligência artificial que cortam o tempo de produção sem cortar qualidade.</p>
-        <ul>
-          <li>Ferramentas de IA para o dia a dia do designer</li>
-          <li>Remoção de fundo e cutout automatizado</li>
-          <li>Geração de cenário e elementos com IA</li>
-          <li>Upscale e finalização em alta resolução</li>
-        </ul>
+        <div class="course-ic">🤖</div>
+        <span class="course-tag">Curso 02 · Crie</span>
+        <h3>IA na Prática</h3>
+        <p>Pra a I.A. fazer o trabalho pesado e você entregar mais rápido.</p>
       </div>
       <div class="course-card reveal">
-        <span class="course-tag">Curso 03</span>
-        <h3>Portfólio & Clientes Internacionais</h3>
-        <p>Como se apresentar, onde encontrar canais gringos e como fechar e receber o pagamento.</p>
-        <ul>
-          <li>Montagem de portfólio que se vende sozinho</li>
-          <li>Onde encontrar canais que contratam</li>
-          <li>Abordagem em inglês, mesmo sem fluência</li>
-          <li>Precificação em dólar e recebimento internacional</li>
-        </ul>
+        <div class="course-ic">💵</div>
+        <span class="course-tag">Curso 03 · Venda</span>
+        <h3>Clientes em Dólar</h3>
+        <p>Pra achar canais gringos, fechar o cliente e receber em dólar.</p>
       </div>
     </div>
   </div>
@@ -708,12 +766,29 @@
   </div>
 </section>
 
+
+<!-- ============ 7B. MÓDULOS BÔNUS ============ -->
+<section class="section" id="bonus-modulos">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> 🎁 Bônus por tempo limitado</span></div>
+    <h2 class="section-title center">E de <span class="grad-text">BÔNUS</span> você ainda leva 4 módulos extras</h2>
+    <p class="section-sub center">Eles não fazem parte do curso principal: são um presente pra quem entrar agora, <b>sem pagar nada a mais</b>: mais de R$ 240 em bônus por R$ 0,00.</p>
+    <div class="bmod-grid">
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/bonus-vite-city.webp" alt="Capa do módulo bônus Lucrando 10K/mês com GTA VI" loading="lazy"><div class="bmod-body"><h4>Lucrando 10K/mês com GTA VI</h4><p>Como aproveitar a onda do GTA VI e lucrar com os canais desse nicho.</p><span class="bvalor"><s>De R$ 67,00</s><b>por R$ 0,00</b></span></div></div>
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/modulo-modo-insano.webp" alt="Capa do módulo bônus Modo Insano" loading="lazy"><div class="bmod-body"><h4>MODO INSANO: o próximo nível</h4><p>Manipulação, iluminação cinematográfica e efeitos pra thumbs de canal grande.</p><span class="bvalor"><s>De R$ 97,00</s><b>por R$ 0,00</b></span></div></div>
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/bonus-mapa-20k.webp" alt="Capa do módulo bônus Mapa dos 20K com Thumbs" loading="lazy"><div class="bmod-body"><h4>Mapa dos 20K com Thumbs</h4><p>O caminho, passo a passo, pra chegar nos 20 mil com thumbnails.</p><span class="bvalor"><s>De R$ 47,00</s><b>por R$ 0,00</b></span></div></div>
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/modulo-pack-50.webp" alt="Capa do módulo bônus Pack com mais de 50 thumbnails editáveis" loading="lazy"><div class="bmod-body"><h4>Pack com +50 thumbnails editáveis</h4><p>Arquivos prontos pra estudar, adaptar e entregar mais rápido.</p><span class="bvalor"><s>De R$ 37,00</s><b>por R$ 0,00</b></span></div></div>
+    </div>
+    <p class="bmod-note">⚠️ Promoção <b>por tempo limitado</b>: os bônus saem e o valor volta para R$ 147,00.</p>
+  </div>
+</section>
+
 <!-- ============ 9. COMPARAÇÃO DE PLANOS ============ -->
 <section class="section" id="planos">
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> Acesso único</span></div>
     <h2 class="section-title center">Um único plano, tudo incluso</h2>
-    <p class="section-sub center">Sem versão limitada. Por um pagamento único de <s style="color:var(--text-mute);">R$ 97</s> R$ 47 (primeira turma) você entra com o método completo + todos os bônus abaixo.</p>
+    <p class="section-sub center">Sem versão limitada. Por um pagamento único de <s style="color:var(--text-mute);">R$ 147</s> R$ 47 (promoção por tempo limitado) você entra com o método completo + todos os bônus abaixo.</p>
 
     <h3 class="included-title">O método completo</h3>
     <div class="capability">
@@ -725,13 +800,12 @@
       <div class="cap-item reveal"><span class="chk">✓</span><p>Certificado de conclusão</p></div>
     </div>
 
-    <h3 class="included-title bonus-title">+ 5 bônus exclusivos inclusos no mesmo acesso</h3>
+    <h3 class="included-title bonus-title">+ 4 módulos bônus (GTA VI, Modo Insano, Mapa dos 20K e Pack +50 thumbs) + 4 bônus exclusivos no mesmo acesso</h3>
     <div class="bonus-grid">
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>📋 Lista de canais gringos que contratam</h4><p>Uma seleção de canais internacionais que costumam terceirizar a criação de thumbnails.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>✉️ Script de prospecção em inglês</h4><p>Mensagens prontas para copiar, adaptar e enviar — mesmo sem fluência no idioma.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>🎨 Pacote de fontes, PSDs e presets</h4><p>Material pronto para acelerar sua produção desde a primeira thumbnail.</p></div>
       <div class="bonus-card reveal"><span class="free">Bônus</span><h4>💵 Planilha de precificação em dólar</h4><p>Calcule quanto cobrar por thumb considerando seu tempo, câmbio e complexidade do job.</p></div>
-      <div class="bonus-card reveal"><span class="free">Bônus</span><h4>👥 Comunidade de designers</h4><p>Espaço para trocar referências, pedir feedback e descobrir novas oportunidades.</p></div>
     </div>
   </div>
 </section>
@@ -771,24 +845,28 @@
 <section class="section" id="oferta">
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> Oferta</span></div>
-    <h2 class="section-title center">Garanta seu acesso completo</h2>
-    <p class="section-sub center">Um pagamento único e você já entra com o método inteiro, sem versões limitadas.</p>
+    <h2 class="section-title center">Promoção por tempo limitado</h2>
+    <p class="section-sub center">Um pagamento único e você já entra com o método inteiro + os 4 módulos bônus.</p>
+    <div class="promo-banner"><div class="t1">🔥 Promoção por tempo limitado</div><div class="t2">De <s class="nw">R$ 147,00</s> por somente <span class="nw">R$ 47,00</span></div></div>
     <div class="price-grid single">
       <div class="price-card featured reveal">
         <h3>Acesso Completo</h3>
         <p style="font-size:13.5px; color:var(--text-mute);">O método inteiro, do zero ao primeiro cliente</p>
-        <div class="price-old">De <s>R$ 97</s> por, apenas para a primeira turma:</div>
-        <div class="price-tag"><span class="cur">R$</span><span class="val">47</span></div>
-        <div class="price-note">ou 12x de R$ 5,61 · depois volta para R$ 97</div>
+        <div class="promo-old">De <s>R$ 147,00</s></div>
+        <div class="promo-por">por somente</div>
+        <div class="price-tag"><span class="cur">R$</span><span class="val">47</span><span class="cents">,00</span></div>
+        <div><span class="promo-save">Você economiza R$ 100 · promoção por tempo limitado</span></div>
+        <div class="price-note">ou 12x de R$ 6,28 · depois volta para R$ 147,00</div>
         <ul>
           <li>Cursos 01, 02 e 03 completos</li>
           <li>Todos os templates, fontes e presets</li>
-          <li>Todos os bônus inclusos</li>
-          <li>Comunidade de designers</li>
+          <li><span><b>BÔNUS:</b> 4 módulos extras (GTA VI, Modo Insano, Mapa dos 20K, Pack +50)</span></li>
+          <li>Todos os outros bônus inclusos</li>
           <li>Certificado de conclusão</li>
           <li>Acesso vitalício</li>
         </ul>
-        <a href="https://checkout.wiven.com.br/checkout/cmurylnuq0js301my7s5veyql?offer=TXP8WDU" class="btn btn-primary btn-block">Quero mudar de vida com design →</a>
+        <a href="https://pay.levydesigner.com/?offer=TXP8WDU" class="btn btn-primary btn-block">Quero garantir por R$ 47,00 →</a>
+        <div class="promo-warn">⏳ Promoção <b>por tempo limitado</b>. Depois volta para R$ 147,00.</div>
       </div>
     </div>
     <div class="secure-row">
@@ -861,7 +939,7 @@
     <h2>Sua próxima thumbnail<br>pode valer em <span class="grad-text">dólar</span>.</h2>
     <p>O método está pronto. As ferramentas estão acessíveis. Falta só você decidir começar hoje.</p>
     <div class="final-cta-actions">
-      <a href="https://checkout.wiven.com.br/checkout/cmurylnuq0js301my7s5veyql?offer=TXP8WDU" class="btn btn-primary">Quero mudar de vida com o design →</a>
+      <a href="https://pay.levydesigner.com/?offer=TXP8WDU" class="btn btn-primary">Quero mudar de vida com o design →</a>
       <a href="https://wa.me/5585996736058" target="_blank" rel="noopener" class="btn btn-ghost">💬 Suporte via WhatsApp</a>
     </div>
   </div>
