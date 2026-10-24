@@ -225,19 +225,9 @@
   .ex-dots .dot-btn{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.35); border:none; padding:0; cursor:pointer; transition:background .3s ease, width .3s ease;}
   .ex-dots .dot-btn.active{background:var(--blue-2); width:16px; border-radius:4px;}
 
-  @keyframes heroIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-  }
-  .hero-grid > div:first-child > *{opacity:0; animation:heroIn .9s var(--ease) forwards;}
-  .hero-grid > div:first-child > *:nth-child(1){animation-delay:.05s;}
-  .hero-grid > div:first-child > *:nth-child(2){animation-delay:.16s;}
-  .hero-grid > div:first-child > *:nth-child(3){animation-delay:.27s;}
-  .hero-grid > div:first-child > *:nth-child(4){animation-delay:.38s;}
-  .hero-grid > div:first-child > *:nth-child(5){animation-delay:.49s;}
-  .hero-grid > div:first-child > *:nth-child(6){animation-delay:.6s;}
-  .hero-grid > div:first-child > *:nth-child(7){animation-delay:.71s;}
-  .hero-grid > div:first-child > *:nth-child(8){animation-delay:.82s;}
+  /* Topo sem animação de entrada: o texto aparece no primeiro frame (quem vem do anúncio não vê tela vazia). */
+  /* Imagens dos carrosséis de exemplos e depoimentos só baixam quando a pessoa chega perto (classe bg-on via JS). */
+  .ex-track:not(.bg-on) .ex-card, .testi-track:not(.bg-on) .testi-card{background-image:none !important; background-color:var(--surface);}
   /* ---------- bento grid ---------- */
   .bento{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
   @media (max-width:900px){ .bento{grid-template-columns:repeat(2,1fr);} }
@@ -521,6 +511,11 @@
   .courses-simple .course-card > p{font-size:16px; color:#DCE1EC; margin-bottom:0;}
 
   .hero .hero-checklist{margin-top:18px; margin-bottom:0;}
+  .hero-what{max-width:520px; margin:20px auto 16px; font-size:17px; line-height:1.45; color:#DCE1EC;}
+  .hero-what b{color:#fff;}
+  .hero-buy{display:flex; width:100%; max-width:420px; margin:0 auto; justify-content:center; font-size:17px; padding:18px 22px; text-transform:uppercase; letter-spacing:0.02em;}
+  .hero-buy-note{margin-top:10px; font-size:13.5px; color:var(--text-mute);}
+  .hero-buy-note b{color:var(--blue-2);}
   /* ---------- role pra baixo ---------- */
   .scroll-down{display:flex; flex-direction:column; align-items:center; gap:2px; margin:22px auto 0; width:max-content;
     font-size:15px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue-2); text-decoration:none;}
@@ -573,6 +568,9 @@
   .price-card .price-tag .cents{margin-left:-6px; font-size:26px; font-weight:800; background:linear-gradient(90deg,var(--blue),var(--blue-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
   .promo-save{display:inline-block; margin:2px auto 10px; background:rgba(0,194,255,0.14); border:1px solid var(--blue-2); color:var(--blue-2); font-size:13px; font-weight:800; padding:6px 14px; border-radius:999px;}
   .promo-warn{margin-top:12px; font-size:12.5px; color:var(--text-mute);}
+  #planos .cap-item p{font-size:16px; font-weight:700; color:#fff; line-height:1.4;}
+  .promo-list-title{font-size:14px; font-weight:800; color:#fff; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px;}
+  .price-card li{font-size:15px; color:#DCE1EC;}
   .promo-warn b{color:#FFB020;}
 </style>
 </head>
@@ -599,7 +597,8 @@
         <li><span class="mark">✓</span> Sem computador caro</li>
         <li><span class="mark">✓</span> Sem precisar aparecer</li>
       </ul>
-      <a href="#paraquem" class="scroll-down">Role pra baixo<span class="arr">↓</span></a>
+      <p class="hero-what">Um passo a passo pra você criar <b>thumbnails pra canais gringos</b> do YouTube e <b>receber em dólar</b>, mesmo começando do zero.</p>
+      <a href="#oferta" class="btn btn-primary hero-buy">Quero começar agora →</a>
     </div>
 
     <div class="hero-banner">
@@ -779,7 +778,7 @@
       <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/bonus-mapa-20k.webp" alt="Capa do módulo bônus Mapa dos 20K com Thumbs" loading="lazy"><div class="bmod-body"><h4>Mapa dos 20K com Thumbs</h4><p>O caminho, passo a passo, pra chegar nos 20 mil com thumbnails.</p><span class="bvalor"><s>De R$ 47,00</s><b>por R$ 0,00</b></span></div></div>
       <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/modulo-pack-50.webp" alt="Capa do módulo bônus Pack com mais de 50 thumbnails editáveis" loading="lazy"><div class="bmod-body"><h4>Pack com +50 thumbnails editáveis</h4><p>Arquivos prontos pra estudar, adaptar e entregar mais rápido.</p><span class="bvalor"><s>De R$ 37,00</s><b>por R$ 0,00</b></span></div></div>
     </div>
-    <p class="bmod-note">⚠️ Promoção <b>por tempo limitado</b>: os bônus saem e o valor volta para R$ 147,00.</p>
+    <p class="bmod-note">⚠️ Promoção <b>por tempo limitado</b>: os bônus saem e o valor volta para R$ 197,00.</p>
   </div>
 </section>
 
@@ -788,16 +787,16 @@
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> Acesso único</span></div>
     <h2 class="section-title center">Um único plano, tudo incluso</h2>
-    <p class="section-sub center">Sem versão limitada. Por um pagamento único de <s style="color:var(--text-mute);">R$ 147</s> R$ 47 (promoção por tempo limitado) você entra com o método completo + todos os bônus abaixo.</p>
+    <p class="section-sub center">Sem versão limitada. Por um pagamento único de <s style="color:var(--text-mute);">R$ 197</s> R$ 67 (Black Friday) você entra com o método completo + todos os bônus abaixo.</p>
 
-    <h3 class="included-title">O método completo</h3>
+    <h3 class="included-title">O que você vai conseguir</h3>
     <div class="capability">
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Curso 01 — Fundamentos da Thumbnail Gringa</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Curso 02 — IA na Prática para Thumbnails</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Curso 03 — Portfólio & Clientes Internacionais</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Acesso vitalício, sem mensalidade</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>7 dias de garantia incondicional</p></div>
-      <div class="cap-item reveal"><span class="chk">✓</span><p>Certificado de conclusão</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Criar thumbnails no padrão gringo, mesmo começando do zero</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Fazer tudo pelo celular ou computador, com a I.A. fazendo o trabalho pesado</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Encontrar canais gringos que pagam em dólar por cada thumbnail</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Fechar seu primeiro cliente gringo com mensagens prontas em inglês</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Montar um portfólio que faz o cliente te chamar</p></div>
+      <div class="cap-item reveal"><span class="chk">✓</span><p>Cobrar em dólar e receber direto no Brasil</p></div>
     </div>
 
     <h3 class="included-title bonus-title">+ 4 módulos bônus (GTA VI, Modo Insano, Mapa dos 20K e Pack +50 thumbs) + 4 bônus exclusivos no mesmo acesso</h3>
@@ -845,28 +844,29 @@
 <section class="section" id="oferta">
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> Oferta</span></div>
-    <h2 class="section-title center">Promoção por tempo limitado</h2>
+    <h2 class="section-title center">Black Friday: oferta por tempo limitado</h2>
     <p class="section-sub center">Um pagamento único e você já entra com o método inteiro + os 4 módulos bônus.</p>
-    <div class="promo-banner"><div class="t1">🔥 Promoção por tempo limitado</div><div class="t2">De <s class="nw">R$ 147,00</s> por somente <span class="nw">R$ 47,00</span></div></div>
+    <div class="promo-banner"><div class="t1">🔥 Black Friday</div><div class="t2">De <s class="nw">R$ 197,00</s> por somente <span class="nw">R$ 67,00</span></div></div>
     <div class="price-grid single">
       <div class="price-card featured reveal">
         <h3>Acesso Completo</h3>
         <p style="font-size:13.5px; color:var(--text-mute);">O método inteiro, do zero ao primeiro cliente</p>
-        <div class="promo-old">De <s>R$ 147,00</s></div>
+        <div class="promo-old">De <s>R$ 197,00</s></div>
         <div class="promo-por">por somente</div>
-        <div class="price-tag"><span class="cur">R$</span><span class="val">47</span><span class="cents">,00</span></div>
-        <div><span class="promo-save">Você economiza R$ 100 · promoção por tempo limitado</span></div>
-        <div class="price-note">ou 12x de R$ 6,28 · depois volta para R$ 147,00</div>
+        <div class="price-tag"><span class="cur">R$</span><span class="val">67</span><span class="cents">,00</span></div>
+        <div><span class="promo-save">Você economiza R$ 130 · Black Friday</span></div>
+        <div class="price-note">ou 12x de R$ 8,95 · depois volta para R$ 197,00</div>
+        <div class="promo-list-title">Com o método você vai:</div>
         <ul>
-          <li>Cursos 01, 02 e 03 completos</li>
-          <li>Todos os templates, fontes e presets</li>
+          <li>Criar thumbnails gringas mesmo do zero</li>
+          <li>Dominar a I.A., pelo celular ou PC</li>
+          <li>Achar canais que pagam em dólar</li>
+          <li>Fechar seu primeiro cliente gringo</li>
           <li><span><b>BÔNUS:</b> 4 módulos extras (GTA VI, Modo Insano, Mapa dos 20K, Pack +50)</span></li>
-          <li>Todos os outros bônus inclusos</li>
-          <li>Certificado de conclusão</li>
-          <li>Acesso vitalício</li>
+          <li>Acesso vitalício e 7 dias de garantia</li>
         </ul>
-        <a href="https://pay.levydesigner.com/?offer=TXP8WDU" class="btn btn-primary btn-block">Quero garantir por R$ 47,00 →</a>
-        <div class="promo-warn">⏳ Promoção <b>por tempo limitado</b>. Depois volta para R$ 147,00.</div>
+        <a href="https://pay.levydesigner.com/?offer=TXP8WDU" class="btn btn-primary btn-block">Quero garantir por R$ 67,00 →</a>
+        <div class="promo-warn">⏳ Promoção <b>por tempo limitado</b>. Depois volta para R$ 197,00.</div>
       </div>
     </div>
     <div class="secure-row">
@@ -915,7 +915,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-head"><h5>Funciona pelo celular?</h5><span class="chev">+</span></div>
-        <div class="faq-body"><div class="faq-body-in">As aulas podem ser assistidas pelo celular. Para produção das thumbnails, recomendamos um computador ou tablet para mais conforto.</div></div>
+        <div class="faq-body"><div class="faq-body-in">Sim. Dá pra fazer tudo pelo celular: assistir às aulas, criar as thumbnails com as ferramentas de I.A. do Curso 02 e falar com os clientes. Se você tiver um computador, ajuda, mas não é obrigatório.</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-head"><h5>Quanto tempo leva para ver resultado?</h5><span class="chev">+</span></div>
@@ -958,6 +958,17 @@
   </div>
 </footer>
 
+<script>
+  // carrega as imagens dos carrosséis só quando a pessoa chega perto deles
+  (() => {
+    const tracks = document.querySelectorAll('.ex-track, .testi-track');
+    if(!('IntersectionObserver' in window)){ tracks.forEach(t => t.classList.add('bg-on')); return; }
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('bg-on'); io.unobserve(e.target); }
+    }), { rootMargin: '300px 0px' });
+    tracks.forEach(t => io.observe(t));
+  })();
+</script>
 <script>
   // exemplos reais carousel
   (() => {
