@@ -572,9 +572,23 @@
   .promo-list-title{font-size:14px; font-weight:800; color:#fff; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px;}
   .price-card li{font-size:15px; color:#DCE1EC;}
   .promo-warn b{color:#FFB020;}
+  .role-baixo{display:block; width:max-content; margin:0 auto 14px; padding:6px 14px; border-radius:999px; background:#FFB020; color:#0B0C14;
+    font-size:12.5px; font-weight:900; letter-spacing:0.06em; text-transform:uppercase; animation:rolaBaixo 1.6s ease-in-out infinite;}
+  @keyframes rolaBaixo{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+  @media (prefers-reduced-motion:reduce){.role-baixo{animation:none}}
+  body{padding-top:var(--bfh,40px);}
+  #bonus-modulos, #oferta{scroll-margin-top:calc(var(--bfh,40px) + 8px);}
+  /* ---------- faixa Black Friday (12 h por pessoa) ---------- */
+  .bfbar{position:fixed; top:0; left:0; right:0; z-index:60; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:4px 8px;
+    padding:9px 14px; background:linear-gradient(90deg,#0b0c14,#141a3d 50%,#0b0c14); border-bottom:1px solid rgba(0,194,255,0.35);
+    font-size:13px; font-weight:800; letter-spacing:0.03em; color:#fff; text-align:center;}
+  .bfbar .bf-tag{color:#FFB020;}
+  .bfbar .bf-t{font-variant-numeric:tabular-nums; background:#0071fc; padding:2px 8px; border-radius:6px; letter-spacing:0.06em;}
+  .bfbar.fim .bf-t{display:none;}
 </style>
 </head>
 <body>
+<div class="bfbar" id="bfbar"><span class="bf-tag">🔥 BLACK FRIDAY</span><span>· ACESSO VITALÍCIO ·</span><span id="bfMsg">sua oferta termina em</span><span class="bf-t" id="bfT">12:00:00</span></div>
 
 <div class="grid-bg"></div>
 <div class="glow glow-1"></div>
@@ -598,7 +612,7 @@
         <li><span class="mark">✓</span> Sem precisar aparecer</li>
       </ul>
       <p class="hero-what">Um passo a passo pra você criar <b>thumbnails pra canais gringos</b> do YouTube e <b>receber em dólar</b>, mesmo começando do zero.</p>
-      <a href="#oferta" class="btn btn-primary hero-buy">Quero começar agora →</a>
+      <a href="#bonus-modulos" class="btn btn-primary hero-buy">Quero começar agora →</a>
     </div>
 
     <div class="hero-banner">
@@ -766,28 +780,12 @@
 </section>
 
 
-<!-- ============ 7B. MÓDULOS BÔNUS ============ -->
-<section class="section" id="bonus-modulos">
-  <div class="wrap">
-    <div class="kicker"><span class="eyebrow"><span class="dot"></span> 🎁 Bônus por tempo limitado</span></div>
-    <h2 class="section-title center">E de <span class="grad-text">BÔNUS</span> você ainda leva 4 módulos extras</h2>
-    <p class="section-sub center">Eles não fazem parte do curso principal: são um presente pra quem entrar agora, <b>sem pagar nada a mais</b>: mais de R$ 240 em bônus por R$ 0,00.</p>
-    <div class="bmod-grid">
-      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/bonus-vite-city.webp" alt="Capa do módulo bônus Lucrando 10K/mês com GTA VI" loading="lazy"><div class="bmod-body"><h4>Lucrando 10K/mês com GTA VI</h4><p>Como aproveitar a onda do GTA VI e lucrar com os canais desse nicho.</p><span class="bvalor"><s>De R$ 67,00</s><b>por R$ 0,00</b></span></div></div>
-      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/modulo-modo-insano.webp" alt="Capa do módulo bônus Modo Insano" loading="lazy"><div class="bmod-body"><h4>MODO INSANO: o próximo nível</h4><p>Manipulação, iluminação cinematográfica e efeitos pra thumbs de canal grande.</p><span class="bvalor"><s>De R$ 97,00</s><b>por R$ 0,00</b></span></div></div>
-      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/bonus-mapa-20k.webp" alt="Capa do módulo bônus Mapa dos 20K com Thumbs" loading="lazy"><div class="bmod-body"><h4>Mapa dos 20K com Thumbs</h4><p>O caminho, passo a passo, pra chegar nos 20 mil com thumbnails.</p><span class="bvalor"><s>De R$ 47,00</s><b>por R$ 0,00</b></span></div></div>
-      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/modulo-pack-50.webp" alt="Capa do módulo bônus Pack com mais de 50 thumbnails editáveis" loading="lazy"><div class="bmod-body"><h4>Pack com +50 thumbnails editáveis</h4><p>Arquivos prontos pra estudar, adaptar e entregar mais rápido.</p><span class="bvalor"><s>De R$ 37,00</s><b>por R$ 0,00</b></span></div></div>
-    </div>
-    <p class="bmod-note">⚠️ Promoção <b>por tempo limitado</b>: os bônus saem e o valor volta para R$ 197,00.</p>
-  </div>
-</section>
-
 <!-- ============ 9. COMPARAÇÃO DE PLANOS ============ -->
 <section class="section" id="planos">
   <div class="wrap">
     <div class="kicker"><span class="eyebrow"><span class="dot"></span> Acesso único</span></div>
     <h2 class="section-title center">Um único plano, tudo incluso</h2>
-    <p class="section-sub center">Sem versão limitada. Por um pagamento único de <s style="color:var(--text-mute);">R$ 197</s> R$ 67 (Black Friday) você entra com o método completo + todos os bônus abaixo.</p>
+    <p class="section-sub center">Sem versão limitada. Por um pagamento único de <span id="bfSub"><s style="color:var(--text-mute);">R$ 197</s> R$ 67 (Black Friday)</span> você entra com o método completo + todos os bônus abaixo.</p>
 
     <h3 class="included-title">O que você vai conseguir</h3>
     <div class="capability">
@@ -827,16 +825,20 @@
   </div>
 </section>
 
-<!-- ============ 11. GARANTIA ============ -->
-<section class="section" id="garantia">
+<!-- ============ 7B. MÓDULOS BÔNUS ============ -->
+<section class="section" id="bonus-modulos">
   <div class="wrap">
-    <div class="guarantee reveal">
-      <div class="g-badge"><span class="n">7</span><span class="d">Dias de<br>garantia</span></div>
-      <div>
-        <h3>Risco zero pra experimentar</h3>
-        <p>Acesse o método, assista às aulas e comece a praticar. Se em até 7 dias você sentir que não é pra você, é só pedir reembolso — sem burocracia e sem perguntas.</p>
-      </div>
+    <div class="role-baixo">⬇ Role pra baixo</div>
+    <div class="kicker"><span class="eyebrow"><span class="dot"></span> 🎁 Bônus por tempo limitado</span></div>
+    <h2 class="section-title center">E de <span class="grad-text">BÔNUS</span> você ainda leva 4 módulos extras</h2>
+    <p class="section-sub center">Eles não fazem parte do curso principal: são um presente pra quem entrar agora, <b>sem pagar nada a mais</b>: mais de R$ 240 em bônus por R$ 0,00.</p>
+    <div class="bmod-grid">
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/bonus-vite-city.webp" alt="Capa do módulo bônus Lucrando 10K/mês com GTA VI" loading="lazy"><div class="bmod-body"><h4>Lucrando 10K/mês com GTA VI</h4><p>Como aproveitar a onda do GTA VI e lucrar com os canais desse nicho.</p><span class="bvalor"><s>De R$ 67,00</s><b>por R$ 0,00</b></span></div></div>
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/modulo-modo-insano.webp" alt="Capa do módulo bônus Modo Insano" loading="lazy"><div class="bmod-body"><h4>MODO INSANO: o próximo nível</h4><p>Manipulação, iluminação cinematográfica e efeitos pra thumbs de canal grande.</p><span class="bvalor"><s>De R$ 97,00</s><b>por R$ 0,00</b></span></div></div>
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/bonus-mapa-20k.webp" alt="Capa do módulo bônus Mapa dos 20K com Thumbs" loading="lazy"><div class="bmod-body"><h4>Mapa dos 20K com Thumbs</h4><p>O caminho, passo a passo, pra chegar nos 20 mil com thumbnails.</p><span class="bvalor"><s>De R$ 47,00</s><b>por R$ 0,00</b></span></div></div>
+      <div class="bmod reveal"><span class="tag">🎁 BÔNUS</span><img src="images/modulo-pack-50.webp" alt="Capa do módulo bônus Pack com mais de 50 thumbnails editáveis" loading="lazy"><div class="bmod-body"><h4>Pack com +50 thumbnails editáveis</h4><p>Arquivos prontos pra estudar, adaptar e entregar mais rápido.</p><span class="bvalor"><s>De R$ 37,00</s><b>por R$ 0,00</b></span></div></div>
     </div>
+    <p class="bmod-note">⚠️ Promoção <b>por tempo limitado</b>: os bônus saem e o valor volta para R$ 197,00.</p>
   </div>
 </section>
 
@@ -873,6 +875,19 @@
       <span>🔒 Pagamento seguro</span>
       <span>⚡ Acesso imediato</span>
       <span>↩ Garantia de 7 dias</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. GARANTIA ============ -->
+<section class="section" id="garantia">
+  <div class="wrap">
+    <div class="guarantee reveal">
+      <div class="g-badge"><span class="n">7</span><span class="d">Dias de<br>garantia</span></div>
+      <div>
+        <h3>Risco zero pra experimentar</h3>
+        <p>Acesse o método, assista às aulas e comece a praticar. Se em até 7 dias você sentir que não é pra você, é só pedir reembolso — sem burocracia e sem perguntas.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1097,5 +1112,56 @@
 
 </script>
 
+<script>
+/* Black Friday de 12 horas POR PESSOA. O relógio começa na 1ª visita e fica salvo (cookie tg_bf em .levydesigner.com,
+   o mesmo que o checkout lê, + cópia no navegador). Passou das 12 h: pra essa pessoa o preço volta pra R$ 197 aqui
+   e no checkout (o checkout confere o mesmo relógio e cobra o valor certo). */
+(function(){
+  var H = 12, DEPOIS = 197;
+  function ler(){ var m = document.cookie.match(/(?:^|; )tg_bf=(\d+)/); var c = m ? +m[1] : 0, l = 0;
+    try { l = +localStorage.getItem('tg_bf') || 0; } catch(e){}
+    var v = [c, l].filter(function(x){ return x > 1700000000 && x <= Date.now()/1000 + 60; });
+    return v.length ? Math.min.apply(null, v) : 0; }
+  function gravar(t){ var dom = /levydesigner\.com$/.test(location.hostname) ? '; domain=.levydesigner.com' : '';
+    document.cookie = 'tg_bf=' + t + '; path=/; max-age=' + (60*86400) + '; samesite=lax' + (location.protocol === 'https:' ? '; secure' : '') + dom;
+    try { localStorage.setItem('tg_bf', t); } catch(e){} }
+  var ini = ler(); if (!ini) ini = Math.floor(Date.now()/1000);
+  gravar(ini);                                   // garante o mesmo relógio no checkout
+  var fim = (ini + H*3600) * 1000, bar = document.getElementById('bfbar'), T = document.getElementById('bfT');
+  function encerrar(){
+    bar.classList.add('fim'); document.getElementById('bfMsg').textContent = 'sua oferta de 12 horas terminou · valor atual R$ 197,00';
+    var q = function(s){ return document.querySelector(s); }, brl = 'R$ ' + DEPOIS + ',00';
+    var b = q('.promo-banner'); if (b) { b.querySelector('.t1').textContent = 'Oferta de Black Friday encerrada'; b.querySelector('.t2').innerHTML = 'Valor atual: <span class="nw">' + brl + '</span>'; }
+    ['.price-card .promo-old', '.price-card .promo-por', '.promo-save', '.bmod-note'].forEach(function(s){ var e = q(s); if (e) e.style.display = 'none'; });
+    var v = q('.price-tag .val'); if (v) v.textContent = DEPOIS;
+    var n = q('.price-note'); if (n) n.textContent = 'ou 12x de R$ 26,32';
+    var w = q('.promo-warn'); if (w) w.textContent = 'A sua oferta de Black Friday de 12 horas terminou.';
+    var sub = document.getElementById('bfSub'); if (sub) sub.textContent = brl;
+    document.querySelectorAll('.price-card a.btn').forEach(function(a){ a.textContent = 'Quero garantir por ' + brl + ' →'; });
+  }
+  function tick(){
+    var s = Math.max(0, Math.floor((fim - Date.now())/1000));
+    if (!s) return encerrar();
+    T.textContent = String(Math.floor(s/3600)).padStart(2,'0') + ':' + String(Math.floor(s%3600/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+    setTimeout(tick, 1000);
+  }
+  tick();
+  // a faixa é fixa: reserva o espaço dela no topo da página (a altura muda quando quebra em 2 linhas no celular)
+  var ajusta = function(){ document.documentElement.style.setProperty('--bfh', bar.offsetHeight + 'px'); };
+  ajusta(); window.addEventListener('resize', ajusta);
+  // botão do topo: desce até os bônus e corrige no fim (as imagens de cima carregam no caminho e empurram a página)
+  var alvo = document.getElementById('bonus-modulos');
+  document.querySelectorAll('a[href="#bonus-modulos"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if (!alvo) return; e.preventDefault();
+      alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var n = 0, conf = function(){ var t = alvo.getBoundingClientRect().top - bar.offsetHeight - 8;
+        if (Math.abs(t) > 30 && n++ < 6) { window.scrollBy({ top: t, behavior: 'smooth' }); setTimeout(conf, 700); } };
+      setTimeout(conf, 1200);
+      try { history.replaceState(null, '', '#bonus-modulos'); } catch (er) {}
+    });
+  });
+})();
+</script>
 </body>
 </html>
