@@ -1113,11 +1113,11 @@
 </script>
 
 <script>
-/* Black Friday de 12 horas POR PESSOA. O relógio começa na 1ª visita e fica salvo (cookie tg_bf em .levydesigner.com,
-   o mesmo que o checkout lê, + cópia no navegador). Passou das 12 h: pra essa pessoa o preço volta pra R$ 197 aqui
-   e no checkout (o checkout confere o mesmo relógio e cobra o valor certo). */
+/* Black Friday de 12 horas POR PESSOA que NUNCA encerra: quando o relógio zera, recomeça outras 12 h.
+   O início fica salvo (cookie tg_bf em .levydesigner.com, o mesmo que o checkout lê, + cópia no navegador)
+   e é renovado a cada ciclo, então o checkout sempre vê uma oferta válida e cobra R$ 67. */
 (function(){
-  var H = 12, DEPOIS = 197;
+  var H = 12;
   function ler(){ var m = document.cookie.match(/(?:^|; )tg_bf=(\d+)/); var c = m ? +m[1] : 0, l = 0;
     try { l = +localStorage.getItem('tg_bf') || 0; } catch(e){}
     var v = [c, l].filter(function(x){ return x > 1700000000 && x <= Date.now()/1000 + 60; });
@@ -1125,23 +1125,17 @@
   function gravar(t){ var dom = /levydesigner\.com$/.test(location.hostname) ? '; domain=.levydesigner.com' : '';
     document.cookie = 'tg_bf=' + t + '; path=/; max-age=' + (60*86400) + '; samesite=lax' + (location.protocol === 'https:' ? '; secure' : '') + dom;
     try { localStorage.setItem('tg_bf', t); } catch(e){} }
-  var ini = ler(); if (!ini) ini = Math.floor(Date.now()/1000);
-  gravar(ini);                                   // garante o mesmo relógio no checkout
-  var fim = (ini + H*3600) * 1000, bar = document.getElementById('bfbar'), T = document.getElementById('bfT');
-  function encerrar(){
-    bar.classList.add('fim'); document.getElementById('bfMsg').textContent = 'sua oferta de 12 horas terminou · valor atual R$ 197,00';
-    var q = function(s){ return document.querySelector(s); }, brl = 'R$ ' + DEPOIS + ',00';
-    var b = q('.promo-banner'); if (b) { b.querySelector('.t1').textContent = 'Oferta de Black Friday encerrada'; b.querySelector('.t2').innerHTML = 'Valor atual: <span class="nw">' + brl + '</span>'; }
-    ['.price-card .promo-old', '.price-card .promo-por', '.promo-save', '.bmod-note'].forEach(function(s){ var e = q(s); if (e) e.style.display = 'none'; });
-    var v = q('.price-tag .val'); if (v) v.textContent = DEPOIS;
-    var n = q('.price-note'); if (n) n.textContent = 'ou 12x de R$ 26,32';
-    var w = q('.promo-warn'); if (w) w.textContent = 'A sua oferta de Black Friday de 12 horas terminou.';
-    var sub = document.getElementById('bfSub'); if (sub) sub.textContent = brl;
-    document.querySelectorAll('.price-card a.btn').forEach(function(a){ a.textContent = 'Quero garantir por ' + brl + ' →'; });
+  var bar = document.getElementById('bfbar'), T = document.getElementById('bfT'), fim;
+  function iniciar(){
+    var agora = Math.floor(Date.now()/1000), ini = ler();
+    if (!ini || ini + H*3600 <= agora) ini = agora;   // expirou (ou 1ª visita): começa um novo ciclo de 12 h
+    gravar(ini);                                       // garante o mesmo relógio no checkout
+    fim = (ini + H*3600) * 1000;
   }
+  iniciar();
   function tick(){
     var s = Math.max(0, Math.floor((fim - Date.now())/1000));
-    if (!s) return encerrar();
+    if (!s) { iniciar(); s = Math.floor((fim - Date.now())/1000); }
     T.textContent = String(Math.floor(s/3600)).padStart(2,'0') + ':' + String(Math.floor(s%3600/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
     setTimeout(tick, 1000);
   }
